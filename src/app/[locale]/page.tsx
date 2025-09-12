@@ -279,7 +279,7 @@ export default function HomePage() {
                     -25%
                   </span>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">Haier Smart TV 55"</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">Haier Smart TV 55&quot;</h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   4K Ultra HD Smart TV with Android system and voice control
                 </p>
