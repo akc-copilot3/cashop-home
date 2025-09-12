@@ -1,0 +1,30 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "brands": "Brands",
+    "services": "Services",
+    "membership": "Membership",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Chinese Premium Brands Worldwide",
+    "subtitle": "Discover authentic Chinese brands with crypto payment support",
+    "cta": "Start Shopping"
+  },
+  "features": {
+    "crypto": {
+      "title": "Crypto Payment",
+      "description": "Support USDT, USDC and other cryptocurrencies"
+    },
+    "quality": {
+      "title": "Quality Inspection",
+      "description": "Free 7-photo quality inspection with video"
+    },
+    "shipping": {
+      "title": "Global Shipping",
+      "description": "Consolidated shipping to reduce costs"
+    }
+  }
+}

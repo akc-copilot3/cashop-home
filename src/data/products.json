@@ -1,0 +1,105 @@
+{
+  "categories": [
+    {
+      "id": "sports",
+      "name": {
+        "en": "Sports & Fitness",
+        "zh": "运动健身",
+        "ja": "スポーツ・フィットネス"
+      }
+    },
+    {
+      "id": "electronics",
+      "name": {
+        "en": "Electronics",
+        "zh": "电子产品",
+        "ja": "電子製品"
+      }
+    },
+    {
+      "id": "fashion",
+      "name": {
+        "en": "Fashion & Beauty",
+        "zh": "时尚美妆",
+        "ja": "ファッション・美容"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "li-ning-shoes-001",
+      "name": {
+        "en": "Li-Ning Basketball Shoes",
+        "zh": "李宁篮球鞋",
+        "ja": "リーニンバスケットボールシューズ"
+      },
+      "description": {
+        "en": "High-performance basketball shoes with advanced cushioning technology",
+        "zh": "具有先进缓震技术的高性能篮球鞋",
+        "ja": "先進的なクッション技術を搭載した高性能バスケットボールシューズ"
+      },
+      "price": {
+        "retail": 89.99,
+        "member": 67.49,
+        "commission": 22.50
+      },
+      "brand": "li-ning",
+      "category": "sports",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400"
+      ],
+      "featured": true
+    },
+    {
+      "id": "anta-running-shoes-001",
+      "name": {
+        "en": "ANTA Running Shoes",
+        "zh": "安踏跑鞋",
+        "ja": "アンタランニングシューズ"
+      },
+      "description": {
+        "en": "Lightweight running shoes designed for comfort and performance",
+        "zh": "专为舒适和性能而设计的轻量跑鞋",
+        "ja": "快適性とパフォーマンスを重視した軽量ランニングシューズ"
+      },
+      "price": {
+        "retail": 79.99,
+        "member": 59.99,
+        "commission": 20.00
+      },
+      "brand": "anta",
+      "category": "sports",
+      "images": [
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400",
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400"
+      ],
+      "featured": true
+    },
+    {
+      "id": "haier-smart-tv-001",
+      "name": {
+        "en": "Haier Smart TV 55\"",
+        "zh": "海尔智能电视55寸",
+        "ja": "ハイアールスマートTV 55インチ"
+      },
+      "description": {
+        "en": "4K Ultra HD Smart TV with Android system and voice control",
+        "zh": "配备安卓系统和语音控制的4K超高清智能电视",
+        "ja": "Android システムと音声制御を備えた4K Ultra HD スマートTV"
+      },
+      "price": {
+        "retail": 499.99,
+        "member": 374.99,
+        "commission": 125.00
+      },
+      "brand": "haier",
+      "category": "electronics",
+      "images": [
+        "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400",
+        "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=400"
+      ],
+      "featured": true
+    }
+  ]
+}

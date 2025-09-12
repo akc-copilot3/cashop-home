@@ -1,0 +1,30 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "products": "商品",
+    "brands": "ブランド",
+    "services": "サービス",
+    "membership": "メンバー",
+    "about": "会社について",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "title": "中国プレミアムブランドを世界へ",
+    "subtitle": "本格的な中国ブランドを発見、暗号通貨決済対応",
+    "cta": "ショッピング開始"
+  },
+  "features": {
+    "crypto": {
+      "title": "暗号通貨決済",
+      "description": "USDT、USDCなどの暗号通貨をサポート"
+    },
+    "quality": {
+      "title": "品質検査",
+      "description": "無料7枚写真品質検査とビデオ"
+    },
+    "shipping": {
+      "title": "グローバル配送",
+      "description": "統合配送でコスト削減"
+    }
+  }
+}

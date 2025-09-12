@@ -1,0 +1,80 @@
+{
+  "brands": [
+    {
+      "id": "li-ning",
+      "name": "李宁 LI-NING",
+      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=LI-NING",
+      "description": {
+        "en": "Leading Chinese sports brand founded by Olympic champion Li Ning",
+        "zh": "由奥运冠军李宁创立的中国领先体育用品品牌",
+        "ja": "オリンピックチャンピオンの李寧によって設立された中国を代表するスポーツブランド"
+      },
+      "category": "sports",
+      "featured": true,
+      "website": "https://www.li-ning.com"
+    },
+    {
+      "id": "anta",
+      "name": "安踏 ANTA",
+      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=ANTA",
+      "description": {
+        "en": "Professional sports equipment manufacturer, official partner of many sports teams",
+        "zh": "专业运动装备制造商，多支运动队官方合作伙伴",
+        "ja": "多くのスポーツチームの公式パートナーであるプロフェッショナルスポーツ機器メーカー"
+      },
+      "category": "sports",
+      "featured": true,
+      "website": "https://www.anta.com"
+    },
+    {
+      "id": "haier",
+      "name": "海尔 Haier",
+      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=HAIER",
+      "description": {
+        "en": "Global home appliance leader with innovative smart home solutions",
+        "zh": "全球家电领导者，提供创新智能家居解决方案",
+        "ja": "革新的なスマートホームソリューションを提供するグローバル家電リーダー"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.haier.com"
+    },
+    {
+      "id": "midea",
+      "name": "美的 Midea",
+      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=MIDEA",
+      "description": {
+        "en": "Fortune Global 500 company specializing in home appliances and HVAC systems",
+        "zh": "财富全球500强企业，专业从事家用电器和暖通空调系统",
+        "ja": "家電製品とHVACシステムを専門とするフォーチュングローバル500企業"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.midea.com"
+    },
+    {
+      "id": "hanp",
+      "name": "韩束 HANP",
+      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=HANP",
+      "description": {
+        "en": "Premium skincare and cosmetics brand focusing on natural ingredients",
+        "zh": "专注天然成分的高端护肤化妆品品牌",
+        "ja": "天然成分にこだわったプレミアムスキンケア・化粧品ブランド"
+      },
+      "category": "fashion",
+      "featured": true
+    },
+    {
+      "id": "septwolves",
+      "name": "七匹狼 SEPTWOLVES",
+      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=SEPTWOLVES",
+      "description": {
+        "en": "Leading men's fashion brand known for quality and style",
+        "zh": "以品质和风格著称的领先男装品牌",
+        "ja": "品質とスタイルで知られる主要メンズファッションブランド"
+      },
+      "category": "fashion",
+      "featured": true
+    }
+  ]
+}

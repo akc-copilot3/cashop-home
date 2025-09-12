@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(source:*)",
+      "Bash(find:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(tree:*)",
+      "Bash(ruff:*)",
+      "Bash(touch:*)",
+      "Bash(cat:*)",
+      "Bash(yarn:*)",
+      "Bash(npm:*)",
+      "Bash(curl:*)",
+      "Bash(ruff check:*)",
+      "Bash(git commit:*)",
+      "Bash(npx:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

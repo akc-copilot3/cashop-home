@@ -1,0 +1,148 @@
+{
+  "membership": {
+    "tiers": [
+      {
+        "id": "guest",
+        "name": {
+          "en": "Guest User",
+          "zh": "普通用户",
+          "ja": "一般ユーザー"
+        },
+        "price": 0,
+        "benefits": [
+          {
+            "en": "Browse all products",
+            "zh": "浏览所有商品",
+            "ja": "全商品閲覧"
+          },
+          {
+            "en": "Pay retail prices",
+            "zh": "原价购买商品",
+            "ja": "定価での購入"
+          }
+        ]
+      },
+      {
+        "id": "regular",
+        "name": {
+          "en": "Regular Member",
+          "zh": "普通会员",
+          "ja": "通常会員"
+        },
+        "price": {
+          "monthly": 9.9,
+          "annual": 99.9
+        },
+        "benefits": [
+          {
+            "en": "Member discount prices",
+            "zh": "享受会员价格",
+            "ja": "会員割引価格"
+          },
+          {
+            "en": "Referral rewards up to $5",
+            "zh": "推荐奖励最高$5",
+            "ja": "最大$5の紹介報酬"
+          },
+          {
+            "en": "Priority customer support",
+            "zh": "优先客服支持",
+            "ja": "優先カスタマーサポート"
+          }
+        ]
+      },
+      {
+        "id": "store",
+        "name": {
+          "en": "Store Member",
+          "zh": "店铺会员",
+          "ja": "ストア会員"
+        },
+        "price": {
+          "monthly": 19.9,
+          "annual": 200.6
+        },
+        "benefits": [
+          {
+            "en": "All Regular Member benefits",
+            "zh": "包含普通会员所有权益",
+            "ja": "通常会員の全特典"
+          },
+          {
+            "en": "Earn commission on sales",
+            "zh": "赚取商品佣金",
+            "ja": "販売手数料の獲得"
+          },
+          {
+            "en": "Personal H5 store",
+            "zh": "专属H5店铺",
+            "ja": "専用H5ストア"
+          },
+          {
+            "en": "Higher referral rewards up to $10",
+            "zh": "更高推荐奖励最高$10",
+            "ja": "最大$10の高額紹介報酬"
+          }
+        ]
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "quality-check",
+      "name": {
+        "en": "Quality Inspection",
+        "zh": "质检服务",
+        "ja": "品質検査"
+      },
+      "description": {
+        "en": "Free 7-photo quality inspection with detailed video documentation",
+        "zh": "免费7张图片质检服务，配备详细视频记录",
+        "ja": "詳細なビデオ記録付きの無料7枚写真品質検査"
+      },
+      "icon": "shield-check"
+    },
+    {
+      "id": "crypto-payment",
+      "name": {
+        "en": "Crypto Payment",
+        "zh": "加密货币支付",
+        "ja": "暗号通貨決済"
+      },
+      "description": {
+        "en": "Support USDT, USDC and other major cryptocurrencies via AEON payment",
+        "zh": "通过AEON支付支持USDT、USDC等主流加密货币",
+        "ja": "AEON決済を通じてUSDT、USDCなどの主要暗号通貨をサポート"
+      },
+      "icon": "coins"
+    },
+    {
+      "id": "global-shipping",
+      "name": {
+        "en": "Global Shipping",
+        "zh": "全球配送",
+        "ja": "グローバル配送"
+      },
+      "description": {
+        "en": "Consolidated shipping service to reduce costs with professional packaging",
+        "zh": "集运合并服务降低成本，专业包装保护",
+        "ja": "プロの梱包によるコスト削減統合配送サービス"
+      },
+      "icon": "truck"
+    },
+    {
+      "id": "24-7-support",
+      "name": {
+        "en": "24/7 Support",
+        "zh": "24/7客服",
+        "ja": "24/7サポート"
+      },
+      "description": {
+        "en": "Round-the-clock multilingual customer support across different time zones",
+        "zh": "全天候多语言客服支持，覆盖不同时区",
+        "ja": "異なるタイムゾーンをカバーする24時間多言語カスタマーサポート"
+      },
+      "icon": "headphones"
+    }
+  ]
+}

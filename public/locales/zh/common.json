@@ -1,0 +1,30 @@
+{
+  "navigation": {
+    "home": "首页",
+    "products": "商品",
+    "brands": "品牌",
+    "services": "服务",
+    "membership": "会员",
+    "about": "关于我们",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "title": "中国优质品牌，全球共享",
+    "subtitle": "发现正宗中国品牌，支持加密货币支付",
+    "cta": "立即购买"
+  },
+  "features": {
+    "crypto": {
+      "title": "加密货币支付",
+      "description": "支持USDT、USDC等加密货币"
+    },
+    "quality": {
+      "title": "质检服务",
+      "description": "免费7张图片质检服务及视频"
+    },
+    "shipping": {
+      "title": "全球配送",
+      "description": "集运合并，降低运费成本"
+    }
+  }
+}
