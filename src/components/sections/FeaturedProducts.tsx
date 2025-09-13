@@ -1,6 +1,10 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import { Product, Locale } from '@/types'
 import { getFeaturedProducts, getLocalizedText } from '@/lib/data'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -8,23 +12,23 @@ interface FeaturedProductsProps {
   locale: Locale
 }
 
-export async function FeaturedProducts({ locale }: FeaturedProductsProps) {
-  const products = await getFeaturedProducts(locale)
+export function FeaturedProducts({ locale }: FeaturedProductsProps) {
+  const t = useTranslations('common')
+  const [products, setProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    getFeaturedProducts(locale).then(setProducts)
+  }, [locale])
 
   return (
     <section className="py-16 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {locale === 'zh' ? '精选产品' : locale === 'ja' ? '注目商品' : 'Featured Products'}
+            {t('products.title')}
           </h2>
           <p className="text-muted-foreground text-lg">
-            {locale === 'zh' 
-              ? '发现来自中国顶级品牌的优质产品' 
-              : locale === 'ja' 
-                ? '中国トップブランドの高品質商品を発見' 
-                : 'Discover quality products from top Chinese brands'
-            }
+            {t('products.subtitle')}
           </p>
         </div>
         
@@ -57,7 +61,7 @@ export async function FeaturedProducts({ locale }: FeaturedProductsProps) {
                   </div>
                   <div className="text-right">
                     <p className="text-sm text-muted-foreground">
-                      {locale === 'zh' ? '佣金' : locale === 'ja' ? '手数料' : 'Commission'}
+                      {t('products.commission')}
                     </p>
                     <p className="text-sm font-semibold text-green-600">
                       ${product.price.commission}
@@ -66,7 +70,7 @@ export async function FeaturedProducts({ locale }: FeaturedProductsProps) {
                 </div>
                 <Button className="w-full" asChild>
                   <Link href={`/products/${product.id}`}>
-                    {locale === 'zh' ? '查看详情' : locale === 'ja' ? '詳細を見る' : 'View Details'}
+                    {t('products.view_details')}
                   </Link>
                 </Button>
               </div>
@@ -77,7 +81,7 @@ export async function FeaturedProducts({ locale }: FeaturedProductsProps) {
         <div className="text-center">
           <Button variant="outline" size="lg" asChild>
             <Link href="/products">
-              {locale === 'zh' ? '查看所有产品' : locale === 'ja' ? 'すべての商品を見る' : 'View All Products'}
+              {t('products.view_all')}
             </Link>
           </Button>
         </div>

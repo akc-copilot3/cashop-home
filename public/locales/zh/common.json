@@ -11,7 +11,85 @@
   "hero": {
     "title": "中国优质品牌，全球共享",
     "subtitle": "发现正宗中国品牌，支持加密货币支付",
-    "cta": "立即购买"
+    "cta": "立即购买",
+    "membership_cta": "加入会员",
+    "tabs": {
+      "brands": "中国头部品牌",
+      "quality": "质量保障",
+      "save_earn": "省钱&赚钱",
+      "payment": "安全支付"
+    },
+    "slides": {
+      "brands": {
+        "highlight": "5000+",
+        "title": " 中国头部品牌",
+        "description": "品质媲美国际顶级好物，价格更具竞争力，轻松入手中国优质商品"
+      },
+      "quality": {
+        "highlight": "质量保障",
+        "title": "服务",
+        "description": "360°透明质检，从源头把控品质，杜绝低质商品，消除用户的品质担忧"
+      },
+      "save_earn": {
+        "highlight": "自购省钱 ",
+        "title": "分享赚钱",
+        "description": "开通会员可享受会员价购买福利，分享商品他人下单还可以获得佣金，灵活自由，多劳多得"
+      },
+      "payment": {
+        "highlight": "加密货币",
+        "title": "支付",
+        "description": "支持加密货币支付，契合海外用户支付习惯，增强隐私与安全保护"
+      }
+    }
+  },
+  "nav": {
+    "tagline": "中国头部品牌代购平台",
+    "language_label": "简体中文"
+  },
+  "brands": {
+    "title": "合作品牌"
+  },
+  "quality_service": {
+    "title": "质量保障服务",
+    "inspection": {
+      "title": "商品6面细节拍摄",
+      "subtitle": "15秒4K视频，360°逶明质检"
+    },
+    "returns": {
+      "title": "无忧退换保障",
+      "subtitle": "畅享购物乐趣，大胆放心购"
+    },
+    "shipping": {
+      "title": "海外物流全程严密监管",
+      "subtitle": "安全防护无死角"
+    }
+  },
+  "membership_page": {
+    "title": "自购省钱 分享赚钱",
+    "member_price": {
+      "highlight": "超值会员价",
+      "description": "为美好生活而省"
+    },
+    "commission": {
+      "highlight": "赚佣金",
+      "description": "多劳多得，轻松赚钱",
+      "prefix": "分享好物"
+    }
+  },
+  "crypto_payment": {
+    "title": "加密货币支付",
+    "lower_fees": {
+      "title": "大幅降低交易手续费，享受更低",
+      "subtitle": "购买价格"
+    },
+    "global_support": {
+      "title": "支持全球客户便捷支付，让购物",
+      "subtitle": "变的简单"
+    },
+    "privacy": {
+      "title": "享受匿名购物体验，加强支付安全",
+      "subtitle": "与隐私"
+    }
   },
   "features": {
     "crypto": {
@@ -25,6 +103,51 @@
     "shipping": {
       "title": "全球配送",
       "description": "集运合并，降低运费成本"
+    }
+  },
+  "products": {
+    "title": "精选产品",
+    "subtitle": "发现来自中国顶级品牌的优质产品",
+    "commission": "佣金",
+    "view_details": "查看详情",
+    "view_all": "查看所有产品"
+  },
+  "membership": {
+    "title": "会员体系",
+    "subtitle": "选择适合您的会员等级，享受更多优惠和权益",
+    "recommended": "推荐",
+    "free": "免费",
+    "month": "月",
+    "year": "年",
+    "start_browsing": "立即浏览",
+    "join_now": "立即加入"
+  },
+  "footer": {
+    "contact_us": "联系我们",
+    "description": "聚焦中国头部品牌商品，整合优质货源与物流，提供质检、商品拍摄、集运等服务，为消费者分别提供可靠的赚钱与购物渠道",
+    "scan_download": "扫码下载",
+    "copyright": "版权所有",
+    "terms": "使用条款",
+    "privacy": "隐私政策",
+    "tagline": "中国优质品牌，全球共享",
+    "products_section": {
+      "title": "产品",
+      "all_products": "所有产品",
+      "sports_fitness": "运动健身",
+      "electronics": "电子产品",
+      "fashion_beauty": "时尚美妆"
+    },
+    "services_section": {
+      "title": "服务",
+      "quality_inspection": "质检服务",
+      "membership": "会员服务",
+      "global_shipping": "全球配送",
+      "crypto_payment": "加密货币支付"
+    },
+    "company_section": {
+      "title": "公司",
+      "privacy_policy": "隐私政策",
+      "terms_of_service": "服务条款"
     }
   }
 }

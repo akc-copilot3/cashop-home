@@ -3,7 +3,7 @@
     {
       "id": "li-ning",
       "name": "李宁 LI-NING",
-      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=LI-NING",
+      "logo": "/images/brands/image2.jpg",
       "description": {
         "en": "Leading Chinese sports brand founded by Olympic champion Li Ning",
         "zh": "由奥运冠军李宁创立的中国领先体育用品品牌",
@@ -16,7 +16,7 @@
     {
       "id": "anta",
       "name": "安踏 ANTA",
-      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=ANTA",
+      "logo": "/images/brands/image3.jpeg",
       "description": {
         "en": "Professional sports equipment manufacturer, official partner of many sports teams",
         "zh": "专业运动装备制造商，多支运动队官方合作伙伴",
@@ -29,7 +29,7 @@
     {
       "id": "haier",
       "name": "海尔 Haier",
-      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=HAIER",
+      "logo": "/images/brands/image4.jpg",
       "description": {
         "en": "Global home appliance leader with innovative smart home solutions",
         "zh": "全球家电领导者，提供创新智能家居解决方案",
@@ -42,7 +42,7 @@
     {
       "id": "midea",
       "name": "美的 Midea",
-      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=MIDEA",
+      "logo": "/images/brands/image5.png",
       "description": {
         "en": "Fortune Global 500 company specializing in home appliances and HVAC systems",
         "zh": "财富全球500强企业，专业从事家用电器和暖通空调系统",
@@ -55,7 +55,7 @@
     {
       "id": "hanp",
       "name": "韩束 HANP",
-      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=HANP",
+      "logo": "/images/brands/image6.jpeg",
       "description": {
         "en": "Premium skincare and cosmetics brand focusing on natural ingredients",
         "zh": "专注天然成分的高端护肤化妆品品牌",
@@ -67,7 +67,7 @@
     {
       "id": "septwolves",
       "name": "七匹狼 SEPTWOLVES",
-      "logo": "https://via.placeholder.com/120x60/000000/FFFFFF?text=SEPTWOLVES",
+      "logo": "/images/brands/image7.jpeg",
       "description": {
         "en": "Leading men's fashion brand known for quality and style",
         "zh": "以品质和风格著称的领先男装品牌",
@@ -75,6 +75,84 @@
       },
       "category": "fashion",
       "featured": true
+    },
+    {
+      "id": "xiaomi",
+      "name": "小米 Xiaomi",
+      "logo": "/images/brands/image8.jpeg",
+      "description": {
+        "en": "Global technology leader in smartphones, smart home and lifestyle products",
+        "zh": "全球智能手机、智能家居和生活产品科技领导者",
+        "ja": "スマートフォン、スマートホーム、ライフスタイル製品のグローバル技術リーダー"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.mi.com"
+    },
+    {
+      "id": "huawei",
+      "name": "华为 Huawei",
+      "logo": "/images/brands/image9.jpeg",
+      "description": {
+        "en": "Leading global provider of ICT infrastructure and smart devices",
+        "zh": "全球领先的ICT基础设施和智能终端提供商",
+        "ja": "ICTインフラとスマートデバイスの世界的リーディングプロバイダー"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.huawei.com"
+    },
+    {
+      "id": "dji",
+      "name": "大疆 DJI",
+      "logo": "/images/brands/image10.png",
+      "description": {
+        "en": "World's leading drone and camera technology company",
+        "zh": "全球领先的无人机和摄影技术公司",
+        "ja": "世界をリードするドローンとカメラ技術企業"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.dji.com"
+    },
+    {
+      "id": "byd",
+      "name": "比亚迪 BYD",
+      "logo": "/images/brands/image11.png",
+      "description": {
+        "en": "Pioneer in electric vehicles and battery technology",
+        "zh": "电动汽车和电池技术先驱",
+        "ja": "電気自動車とバッテリー技術のパイオニア"
+      },
+      "category": "automotive",
+      "featured": true,
+      "website": "https://www.byd.com"
+    },
+    {
+      "id": "oppo",
+      "name": "OPPO",
+      "logo": "/images/brands/image13.jpeg",
+      "description": {
+        "en": "Global smart device brand focusing on photography and design",
+        "zh": "专注摄影和设计的全球智能设备品牌",
+        "ja": "写真とデザインに特化したグローバルスマートデバイスブランド"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.oppo.com"
+    },
+    {
+      "id": "vivo",
+      "name": "vivo",
+      "logo": "/images/brands/image14.jpg",
+      "description": {
+        "en": "Technology company focused on smartphone innovation",
+        "zh": "专注智能手机创新的科技公司",
+        "ja": "スマートフォンイノベーションに焦点を当てたテクノロジー企業"
+      },
+      "category": "electronics",
+      "featured": true,
+      "website": "https://www.vivo.com"
     }
   ]
 }

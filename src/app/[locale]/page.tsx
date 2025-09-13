@@ -1,309 +1,429 @@
 'use client'
 
-import { useTranslation } from '@/hooks/useTranslation'
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import React, { useState, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
+import { BrandWall } from '@/components/sections/BrandWall'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+
+// Image constants for local assets
+const heroBackground = "/images/hero-background.png"
+const heroBackground2 = "/images/hero-background-2.png"
+const heroBackground3 = "/images/hero-background-3.png"
+const heroBackground4 = "/images/hero-background-4.png"
+const footerBackground = "/images/footer-background.png"
+const serviceQualityInspection = "/images/service-quality-inspection.png"
+const serviceReturns = "/images/service-returns.png"
+const serviceShipping = "/images/service-shipping.png"
+const cryptoPayment1 = "/images/crypto-payment-1.png"
+const cryptoPayment2 = "/images/crypto-payment-2.png"
+const cryptoPayment3 = "/images/crypto-payment-3.png"
+const starDecoration = "/images/star-decoration.svg"
+const cashopLogoMain = "/images/cashop-logo-main.svg"
+const cashopLogoMainText = "/images/cashop-logo-main-text.svg"
+const downloadIcon = "/images/download-icon.svg"
+const facebookIcon = "/images/facebook-icon.svg"
+const instagramIcon = "/images/instagram-icon.svg"
+const twitterIcon = "/images/twitter-icon.svg"
+const youtubeIcon = "/images/youtube-icon.svg"
+const qrCodeBg = "/images/qr-code-bg.png"
+const qrCodeGroup = "/images/qr-code-group.svg"
+const membershipIcon1 = "/images/membership-icon-1.svg"
+const membershipIcon2 = "/images/membership-icon-2.svg"
+const imgRectangle10 = "/images/membership-showcase-1.png"
+const imgRectangle11 = "/images/membership-showcase-2.png"
+const moneyIcon = "/images/money-icon.svg"
+const cryptoIcon = "/images/crypto-icon.svg"
+const qualityIcon = "/images/quality-icon.svg"
 
 export default function HomePage() {
-  const { t } = useTranslation()
+  const t = useTranslations()
   
-  // Background images carousel
-  const heroImages = [
-    '/images/hero-bg-1.jpg',
-    '/images/hero-bg-2.jpg', 
-    '/images/hero-bg-3.jpg',
-    '/images/hero-bg-4.jpg'
-  ]
-  
-  const [currentImage, setCurrentImage] = useState(0)
-  
+  const [activeTab, setActiveTab] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Hero carousel data with translations
+  const heroData = [
+    {
+      id: 0,
+      title: {
+        highlight: t('hero.slides.brands.highlight'),
+        main: t('hero.slides.brands.title'),
+        color: "#ff2d7f"
+      },
+      description: t('hero.slides.brands.description'),
+      background: heroBackground,
+      icon: starDecoration,
+      tab: t('hero.tabs.brands')
+    },
+    {
+      id: 1,
+      title: {
+        highlight: t('hero.slides.quality.highlight'),
+        main: t('hero.slides.quality.title'),
+        color: "#ff2d7f"
+      },
+      description: t('hero.slides.quality.description'),
+      background: heroBackground4,
+      icon: qualityIcon,
+      tab: t('hero.tabs.quality')
+    },
+    {
+      id: 2,
+      title: {
+        highlight: t('hero.slides.save_earn.highlight'),
+        main: t('hero.slides.save_earn.title'),
+        color: "#ff2d7f"
+      },
+      description: t('hero.slides.save_earn.description'),
+      background: heroBackground2,
+      icon: moneyIcon,
+      tab: t('hero.tabs.save_earn')
+    },
+    {
+      id: 3,
+      title: {
+        highlight: t('hero.slides.payment.highlight'),
+        main: t('hero.slides.payment.title'),
+        color: "#ff2d7f"
+      },
+      description: t('hero.slides.payment.description'),
+      background: heroBackground3,
+      icon: cryptoIcon,
+      tab: t('hero.tabs.payment')
+    }
+  ];
+
+  const currentHero = heroData[activeTab];
+
+  // Auto-carousel functionality
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length)
-    }, 6000) // 6秒切换一次
-    
-    return () => clearInterval(interval)
-  }, [heroImages.length])
+    const startAutoCarousel = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      intervalRef.current = setInterval(() => {
+        if (!isPaused) {
+          setActiveTab((prev) => (prev + 1) % heroData.length);
+        }
+      }, 5000); // 5 seconds per slide
+    };
+
+    startAutoCarousel();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused]);
+
+  // Handle manual tab click
+  const handleTabClick = (index: number) => {
+    setActiveTab(index);
+    // Restart auto-carousel after manual selection
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      if (!isPaused) {
+        setActiveTab((prev) => (prev + 1) % heroData.length);
+      }
+    }, 5000);
+  };
+
+  // Pause/resume on hover
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden min-h-screen flex items-center">
-        {/* Background Images Carousel */}
-        <div className="absolute inset-0">
-          {heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-2000 ${
-                index === currentImage ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <Image
-                src={image}
-                alt={`Hero background ${index + 1}`}
-                fill
-                className="object-cover"
-                priority={index === 0}
-                quality={90}
-              />
+    <div className="bg-gradient-to-b from-white to-[#c8dbfd] relative w-full min-w-[1440px]">
+      <div className="w-[1440px] mx-auto relative">
+      {/* Header Section */}
+      <div className="relative bg-[#f9f9f9] h-[800px] overflow-hidden">
+        <div className="absolute bg-neutral-50 h-[863px] left-0 right-0 top-0" />
+        
+        {/* Background Filter */}
+        <div 
+          className="absolute bg-[#f9f9f9] inset-0 overflow-hidden"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div className="absolute bg-cover bg-center bg-white inset-0 transition-all duration-500" style={{ backgroundImage: `url('${currentHero.background}')` }} />
+          <div className="absolute bg-black bg-opacity-50 bottom-0 h-[800px] left-1/2 -translate-x-1/2 w-[1440px]" />
+          
+          {/* Main Hero Content */}
+          <div className="absolute flex flex-col gap-[30px] h-[156px] items-start justify-start left-[194px] top-[332px] w-[928px]">
+            <div className="flex gap-4 items-center justify-start relative">
+              <div className="font-bold text-[60px] text-white tracking-[2px] leading-[80px] whitespace-pre transition-all duration-500" style={{ fontFamily: "'Alimama_FangYuanTi_VF:Bold-Square', sans-serif" }}>
+                <p className="leading-[80px] whitespace-pre">
+                  <span style={{ color: currentHero.title.color }}>{currentHero.title.highlight}</span>
+                  <span className="text-white">{currentHero.title.main}</span>
+                </p>
+              </div>
+              <div className="relative w-[46px] h-[46px]">
+                <img alt="" className="w-full h-full object-contain transition-all duration-500" src={currentHero.icon} />
+              </div>
+            </div>
+            <div className="font-normal text-[32px] text-white leading-[46px] min-w-full transition-all duration-500" style={{ fontFamily: "'PingFang SC:Regular', sans-serif", width: "min-content" }}>
+              <p className="leading-[46px]">{currentHero.description}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Bar */}
+        <div className="absolute flex h-[104px] items-center justify-between left-1/2 overflow-hidden px-10 py-6 top-0 -translate-x-1/2 w-[1440px] z-20">
+          {/* Background Layer with Blur Effect */}
+          <div className="absolute backdrop-blur-[20px] backdrop-filter bg-[rgba(255,255,255,0.7)] h-[104px] left-0 top-0 w-[1440px] -z-10" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }} />
+          
+          {/* Logo Section */}
+          <div className="flex gap-2 items-start justify-start overflow-hidden relative z-10" data-name="logo">
+            {/* Logo Icon */}
+            <div className="h-[45.729px] relative w-[49.386px]" data-name="logo">
+              <img alt="Cashop Logo Icon" className="w-full h-full object-contain" src={cashopLogoMain} />
+            </div>
+            {/* Logo Text and Tagline */}
+            <div className="flex flex-col gap-0 items-start justify-start relative">
+              {/* Main Logo Vector */}
+              <div className="h-[35.567px] relative w-[121.22px]" data-name="Vector">
+                <img alt="Cashop Logo Vector" className="w-full h-full object-contain" src={cashopLogoMainText} />
+              </div>
+              {/* Tagline Text */}
+              <div className="font-medium h-3.5 leading-[0] not-italic relative text-[8px] text-[#222222] tracking-[4.5px]" style={{ fontFamily: "'PingFang SC:Medium', sans-serif" }}>
+                <p className="leading-[14px]">{t('nav.tagline')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Navigation */}
+          <div className="flex gap-[58px] items-center justify-start relative z-10">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+            
+            {/* Download Icon */}
+            <div className="relative w-[26px] h-[26px]" data-name="icon下载">
+              <img alt="Download" className="w-full h-full object-contain" src={downloadIcon} />
+            </div>
+          </div>
+        </div>
+
+        {/* Navigation Tabs */}
+        <div className="absolute backdrop-blur-[10px] backdrop-filter bg-[rgba(255,255,255,0.2)] flex h-14 items-center justify-start left-[195px] top-[684px] w-[1050px]">
+          {heroData.map((item, index) => (
+            <div key={item.id} className="flex flex-col gap-2.5 h-14 items-center justify-center px-[42px] py-4 relative w-[262px] cursor-pointer transition-all duration-300 hover:bg-[rgba(255,255,255,0.1)]" onClick={() => handleTabClick(index)}>
+              <div className={`${activeTab === index ? 'font-medium' : 'font-normal'} text-[16px] text-center text-white leading-[22px] whitespace-pre transition-all duration-300`} style={{ fontFamily: activeTab === index ? "'San Francisco Display:Medium', 'Noto Sans JP:Regular', 'Noto Sans SC:Regular', sans-serif" : "'San Francisco Display:Regular', 'Noto Sans SC:Regular', 'Noto Sans JP:Regular', sans-serif", fontVariationSettings: "'wght' 400" }}>
+                <p className="leading-[22px] whitespace-pre">{item.tab}</p>
+              </div>
+              {/* Divider - only show for items 1, 2, 3 (not the last one) */}
+              {index < heroData.length - 1 && (
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-6 bg-[rgba(255,255,255,0.1)]" />
+              )}
             </div>
           ))}
-          
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0">
-            {/* Large floating elements */}
-            <div className="absolute top-10 left-10 w-20 h-20 bg-red-500/20 rounded-full blur-xl animate-pulse"></div>
-            <div className="absolute top-32 right-20 w-32 h-32 bg-pink-500/15 rounded-full blur-xl animate-pulse delay-700"></div>
-            <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-orange-500/15 rounded-full blur-xl animate-pulse delay-1000"></div>
-            <div className="absolute bottom-10 right-10 w-16 h-16 bg-yellow-500/20 rounded-full blur-xl animate-pulse delay-300"></div>
-            
-            {/* Moving geometric shapes */}
-            <div className="absolute top-1/4 right-1/3 w-2 h-2 bg-white/30 rounded-full animate-ping"></div>
-            <div className="absolute top-3/4 left-1/5 w-1 h-1 bg-red-400/40 rounded-full animate-ping delay-500"></div>
-            <div className="absolute top-1/2 right-1/5 w-1.5 h-1.5 bg-pink-400/40 rounded-full animate-ping delay-1000"></div>
-            
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
-          </div>
+          {/* Active Indicator */}
+          <div className="absolute backdrop-blur-[10px] backdrop-filter bg-[#ff2d7f] h-1 top-[52px] w-[262px] transition-all duration-500 ease-in-out" style={{ left: `${activeTab * 262}px` }} />
         </div>
+      </div>
 
-        <div className="container mx-auto px-4 text-center relative z-10 max-w-6xl">
-          {/* Floating brand badge */}
-          <div className="mb-8 animate-float">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20 shadow-2xl">
-              <span className="text-2xl animate-pulse">🇨🇳</span>
-              <span className="text-white font-semibold tracking-wide">中国品牌 · 全球共享</span>
-              <span className="text-2xl animate-pulse delay-300">🌍</span>
+      {/* Partner Brands Section */}
+      <div className="mt-[90px] text-center">
+        <h2 className="font-semibold text-[40px] text-[#222222] leading-[60px] mb-[50px]">
+          {t('brands.title')}
+        </h2>
+        
+        {/* Brand Wall Carousel */}
+        <BrandWall />
+        </div>
+      </div>
+
+      {/* Quality Assurance Section */}
+      <div className="mt-[90px]">
+        <h2 className="font-semibold text-[40px] text-[#222222] text-center leading-[60px] mb-[58px]">
+          {t('quality_service.title')}
+        </h2>
+        
+        <div className="flex gap-4 justify-center">
+          {/* Service Card 1 */}
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
+            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${serviceQualityInspection}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
+            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
+              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+                <p className="mb-0">{t('quality_service.inspection.title')}</p>
+                <p>{t('quality_service.inspection.subtitle')}</p>
+              </div>
             </div>
           </div>
-          
-          {/* Main heading with enhanced styling */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-red-200 to-pink-200 bg-clip-text text-transparent leading-tight animate-float-delayed">
-            <div className="mb-2">{t.hero.title}</div>
-            <div className="text-2xl sm:text-3xl md:text-4xl font-normal text-red-300 opacity-90">
-              Premium Chinese Brands Worldwide
-            </div>
-          </h1>
-          
-          {/* Enhanced subtitle */}
-          <p className="text-lg sm:text-xl text-gray-200 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-            {t.hero.subtitle}
-          </p>
-          
-          {/* Enhanced feature highlights */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12 px-4">
-            <div className="flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm px-5 py-3 rounded-full border border-green-400/30 hover:border-green-400/50 transition-all duration-300 group">
-              <span className="text-xl group-hover:scale-110 transition-transform duration-300">💳</span>
-              <span className="text-white text-sm font-medium">加密货币支付</span>
-            </div>
-            <div className="flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-indigo-500/20 backdrop-blur-sm px-5 py-3 rounded-full border border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 group">
-              <span className="text-xl group-hover:scale-110 transition-transform duration-300">🛡️</span>
-              <span className="text-white text-sm font-medium">质检保证</span>
-            </div>
-            <div className="flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 backdrop-blur-sm px-5 py-3 rounded-full border border-orange-400/30 hover:border-orange-400/50 transition-all duration-300 group">
-              <span className="text-xl group-hover:scale-110 transition-transform duration-300">🚚</span>
-              <span className="text-white text-sm font-medium">全球配送</span>
+
+          {/* Service Card 2 */}
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
+            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${serviceReturns}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#736653] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
+            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
+              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+                <p className="mb-0">{t('quality_service.returns.title')}</p>
+                <p>{t('quality_service.returns.subtitle')}</p>
+              </div>
             </div>
           </div>
-          
-          {/* Enhanced CTA button */}
-          <div className="space-y-4">
-            <button className="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white px-12 py-4 rounded-2xl text-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-red-400/50 group">
-              <span className="flex items-center gap-3 justify-center">
-                <span className="text-xl group-hover:scale-110 transition-transform duration-300">🚀</span>
-                <span>{t.hero.cta}</span>
-                <span className="text-xl group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </span>
-            </button>
-            
-            <div className="flex items-center justify-center gap-6 text-white/70 text-sm mb-8">
-              <div className="flex items-center gap-1">
-                <span>✓</span>
-                <span>免费注册</span>
+
+          {/* Service Card 3 */}
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
+            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${serviceShipping}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#394b69] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
+            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
+              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+                <p className="mb-0">{t('quality_service.shipping.title')}</p>
+                <p>{t('quality_service.shipping.subtitle')}</p>
               </div>
-              <div className="flex items-center gap-1">
-                <span>✓</span>
-                <span>30天退款保证</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span>✓</span>
-                <span>24/7客服支持</span>
-              </div>
-            </div>
-            
-            {/* Image carousel indicators */}
-            <div className="flex justify-center gap-3">
-              {heroImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImage(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentImage 
-                      ? 'bg-white scale-125' 
-                      : 'bg-white/40 hover:bg-white/60'
-                  }`}
-                  aria-label={`Switch to background image ${index + 1}`}
-                />
-              ))}
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="text-center p-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
-                💳
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">{t.features.crypto.title}</h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.features.crypto.description}
-              </p>
-            </div>
-
-            <div className="text-center p-8 bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
-                🛡️
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">{t.features.quality.title}</h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.features.quality.description}
-              </p>
-            </div>
-
-            <div className="text-center p-8 bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
-                🚚
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">{t.features.shipping.title}</h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.features.shipping.description}
-              </p>
-            </div>
-          </div>
+      {/* Membership Benefits Section */}
+      <div className="content-stretch flex flex-col gap-[37px] items-center justify-start relative size-full mt-[120px]" data-node-id="5703:57">
+        <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[#222222] text-[40px] text-center" data-node-id="5641:344" style={{ width: "min-content" }}>
+          <p className="leading-[60px]">{t('membership_page.title')}</p>
         </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-slate-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
-              {t.products.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              {t.products.subtitle}
-            </p>
+        <div className="content-stretch flex gap-[94px] items-center justify-start relative shrink-0" data-node-id="6033:2049">
+          <div className="h-[454px] relative shrink-0 w-[590px]" data-node-id="6033:2047">
+            <div className="absolute bg-cover bg-center bg-white h-[227px] left-0 rounded-[8px] top-0 w-[302px]" data-node-id="5703:17" style={{ backgroundImage: `url('${imgRectangle10}')` }}>
+              <div aria-hidden="true" className="absolute border-[#dce8fd] border-[6px] border-solid inset-[-6px] pointer-events-none rounded-[14px]" />
+            </div>
+            <div className="absolute bg-cover bg-center bg-white h-[227px] left-[141px] rounded-[8px] top-[113px] w-[302px]" data-node-id="5703:18" style={{ backgroundImage: `url('${imgRectangle11}')` }}>
+              <div aria-hidden="true" className="absolute border-[#dce8fd] border-[6px] border-solid inset-[-6px] pointer-events-none rounded-[14px]" />
+            </div>
+            <div className="absolute bg-cover bg-center bg-white h-[227px] left-72 rounded-[8px] top-[227px] w-[302px]" data-node-id="5703:19" style={{ backgroundImage: `url('${imgRectangle10}')` }}>
+              <div aria-hidden="true" className="absolute border-[#dce8fd] border-[6px] border-solid inset-[-6px] pointer-events-none rounded-[14px]" />
+            </div>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Li-Ning Shoes */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="aspect-square bg-gradient-to-br from-red-100 to-pink-100 flex items-center justify-center text-6xl">
-                👟
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    {t.products.categories.sports}
-                  </span>
-                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    -25%
-                  </span>
+          <div className="content-stretch flex flex-col gap-[88px] items-start justify-start relative shrink-0" data-node-id="6033:2048">
+            <div className="content-stretch flex gap-[25px] items-start justify-start relative shrink-0" data-node-id="5703:32">
+              <div className="h-[42.295px] relative shrink-0 w-[23.551px]" data-node-id="5703:29">
+                <div className="absolute bottom-0 left-[-9.9%] right-[-3.17%] top-0">
+                  <img alt="" className="block max-w-none size-full" src={membershipIcon1} />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">Li-Ning Basketball Shoes</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  High-performance basketball shoes with advanced cushioning technology
+              </div>
+              <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:20">
+                <p className="mb-0">
+                  <span>"</span>
+                  <span className="text-[#ff2d7f]">{t('membership_page.member_price.highlight')}</span>
+                  <span>"福利</span>
                 </p>
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <span className="text-2xl font-bold text-red-600">$67.49</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">$89.99</span>
-                  </div>
-                  <span className="text-sm font-semibold text-green-600">{t.products.save} $22.50</span>
-                </div>
-                <button className="w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 rounded-xl font-semibold hover:from-red-600 hover:to-pink-700 transition-all duration-300">
-                  {t.products.viewDetails}
-                </button>
+                <p>{t('membership_page.member_price.description')}</p>
               </div>
             </div>
-
-            {/* ANTA Shoes */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="aspect-square bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center text-6xl">
-                👟
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    {t.products.categories.sports}
-                  </span>
-                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    -25%
-                  </span>
+            <div className="content-stretch flex gap-[25px] items-start justify-start relative shrink-0" data-node-id="5703:33">
+              <div className="h-[43.03px] relative shrink-0 w-[24.096px]" data-node-id="5703:28">
+                <div className="absolute bottom-0 left-[-9.68%] right-[-3.07%] top-0">
+                  <img alt="" className="block max-w-none size-full" src={membershipIcon2} />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">ANTA Running Shoes</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  Lightweight running shoes designed for comfort and performance
+              </div>
+              <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:21">
+                <p className="mb-0">
+                  <span>{t('membership_page.commission.prefix')}"</span>
+                  <span className="text-[#ff2d7f]">{t('membership_page.commission.highlight')}</span>
+                  <span>"</span>
                 </p>
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <span className="text-2xl font-bold text-red-600">$59.99</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">$79.99</span>
-                  </div>
-                  <span className="text-sm font-semibold text-green-600">{t.products.save} $20.00</span>
-                </div>
-                <button className="w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 rounded-xl font-semibold hover:from-red-600 hover:to-pink-700 transition-all duration-300">
-                  {t.products.viewDetails}
-                </button>
+                <p>{t('membership_page.commission.description')}</p>
               </div>
             </div>
-
-            {/* Haier TV */}
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-              <div className="aspect-square bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center text-6xl">
-                📺
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="bg-pink-100 text-pink-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    {t.products.categories.electronics}
-                  </span>
-                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    -25%
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-gray-800">Haier Smart TV 55&quot;</h3>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  4K Ultra HD Smart TV with Android system and voice control
-                </p>
-                <div className="flex justify-between items-center mb-4">
-                  <div>
-                    <span className="text-2xl font-bold text-red-600">$374.99</span>
-                    <span className="text-sm text-gray-500 line-through ml-2">$499.99</span>
-                  </div>
-                  <span className="text-sm font-semibold text-green-600">{t.products.save} $125.00</span>
-                </div>
-                <button className="w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 rounded-xl font-semibold hover:from-red-600 hover:to-pink-700 transition-all duration-300">
-                  {t.products.viewDetails}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <button className="bg-white text-gray-800 px-8 py-4 rounded-xl font-semibold border-2 border-gray-200 hover:bg-gray-50 transition-all duration-300 shadow-lg">
-              {t.products.viewAll}
-            </button>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Cryptocurrency Payment Section */}
+      <div className="mt-[120px]">
+        <h2 className="font-semibold text-[40px] text-[#222222] text-center leading-[60px] mb-[58px]">
+          {t('crypto_payment.title')}
+        </h2>
+        
+        <div className="flex gap-4 justify-center">
+          {/* Payment Card 1 */}
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
+            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${cryptoPayment1}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#17323a] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
+            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
+              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+                <p className="mb-0">{t('crypto_payment.lower_fees.title')}</p>
+                <p>{t('crypto_payment.lower_fees.subtitle')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Card 2 */}
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
+            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${cryptoPayment2}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
+            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
+              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+                <p className="mb-0">{t('crypto_payment.global_support.title')}</p>
+                <p>{t('crypto_payment.global_support.subtitle')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Card 3 */}
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
+            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${cryptoPayment3}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
+            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
+              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+                <p className="mb-0">{t('crypto_payment.privacy.title')}</p>
+                <p>{t('crypto_payment.privacy.subtitle')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <div className="bg-gradient-to-r from-[#8B1538] via-[#5C2D91] to-[#1B365D] box-border content-stretch flex items-center justify-between px-[193px] py-[37px] relative w-[1440px] h-auto mx-auto mt-[120px]" data-name="div" data-node-id="5641:293">
+        <div className="content-stretch flex flex-col gap-[25px] items-start justify-start overflow-clip relative shrink-0 w-[733px]" data-name="col-md-3" data-node-id="5641:294">
+          <div className="font-['Montserrat:Bold',_'Noto_Sans_SC:Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-[24px] text-nowrap text-white" data-node-id="5641:295">
+            <p className="leading-[32px] whitespace-pre">{t('footer.contact_us')}</p>
+          </div>
+          <div className="font-['PingFang_SC:Medium',_sans-serif] leading-[20px] min-w-full not-italic relative shrink-0 text-[14px] text-white" data-node-id="5641:296" style={{ width: "min-content" }}>
+            <p className="mb-0">{t('footer.description')}</p>
+          </div>
+          <div className="content-stretch flex gap-5 h-6 items-center justify-start overflow-clip relative shrink-0 w-[156px]" data-name="social media" data-node-id="5641:297">
+            <div className="relative shrink-0 size-6" data-name="ant-design:facebook-filled" data-node-id="5641:299">
+              <img alt="" className="block max-w-none size-full" src={facebookIcon} />
+            </div>
+            <div className="relative shrink-0 size-6" data-name="ant-design:instagram-outlined" data-node-id="5641:305">
+              <img alt="" className="block max-w-none size-full" src={instagramIcon} />
+            </div>
+            <div className="relative shrink-0 size-6" data-name="ant-design:twitter-outlined" data-node-id="5641:312">
+              <img alt="" className="block max-w-none size-full" src={twitterIcon} />
+            </div>
+            <div className="relative shrink-0 size-6" data-name="carbon:logo-youtube" data-node-id="5641:314">
+              <img alt="" className="block max-w-none size-full" src={youtubeIcon} />
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-4 items-center justify-start relative shrink-0 w-[205px]" data-node-id="5641:318">
+          <div className="relative shrink-0 size-[205px]" data-node-id="5641:320">
+            <img alt="" className="block max-w-none size-full" src={qrCodeGroup} />
+            <div className="absolute bg-cover bg-center bg-white left-2.5 size-[185px] top-2.5" data-node-id="5641:325" style={{ backgroundImage: `url('${qrCodeBg}')` }} />
+          </div>
+          <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[18px] text-center text-white" data-node-id="5641:319" style={{ width: "min-content" }}>
+            <p className="leading-[24px]">{t('footer.scan_download')}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright Footer */}
+      <div className="bg-[#f9f9f9] h-[76px] w-[1440px] left-0 overflow-hidden right-0 relative mx-auto">
+        <div className="bg-cover bg-center bg-no-repeat h-[76px] left-0 right-0 absolute top-0" style={{ backgroundImage: `url('${footerBackground}')` }} />
+        <div className="h-[74px] left-1/2 overflow-hidden top-0 -translate-x-1/2 w-[1050px] absolute">
+          <div className="h-6 left-1/2 overflow-hidden top-[25px] -translate-x-1/2 w-[577px] absolute">
+            <div className="font-normal text-[14px] text-white leading-[24px] text-center">
+              {t('footer.copyright')} © {new Date().getFullYear()} www.cashop.com. {t('footer.copyright')}. {t('footer.terms')} | {t('footer.privacy')}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

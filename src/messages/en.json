@@ -11,7 +11,85 @@
   "hero": {
     "title": "Chinese Premium Brands Worldwide",
     "subtitle": "Discover authentic Chinese brands with crypto payment support",
-    "cta": "Start Shopping"
+    "cta": "Start Shopping",
+    "membership_cta": "Join Membership",
+    "tabs": {
+      "brands": "Chinese Premium Brands",
+      "quality": "Quality Assurance",
+      "save_earn": "Save & Earn",
+      "payment": "Secure Payment"
+    },
+    "slides": {
+      "brands": {
+        "highlight": "5000+",
+        "title": " Chinese Premium Brands",
+        "description": "Quality rivals international top-tier goods with more competitive prices, easily access Chinese premium products"
+      },
+      "quality": {
+        "highlight": "Quality Assurance",
+        "title": "Service",
+        "description": "360° transparent quality inspection, controlling quality from the source, eliminating low-quality goods, removing user quality concerns"
+      },
+      "save_earn": {
+        "highlight": "Save on Self-Purchase ",
+        "title": "Earn by Sharing",
+        "description": "Membership unlocks member price benefits, share products and earn commission when others order, flexible and free, work more earn more"
+      },
+      "payment": {
+        "highlight": "Cryptocurrency",
+        "title": "Payment",
+        "description": "Supports cryptocurrency payment, aligns with overseas user payment habits, enhances privacy and security protection"
+      }
+    }
+  },
+  "nav": {
+    "tagline": "Chinese Premium Brand Dropshipping Platform",
+    "language_label": "English"
+  },
+  "brands": {
+    "title": "Partner Brands"
+  },
+  "quality_service": {
+    "title": "Quality Assurance Service",
+    "inspection": {
+      "title": "6-Side Product Detail Photography",
+      "subtitle": "15-second 4K video, 360° transparent quality inspection"
+    },
+    "returns": {
+      "title": "Worry-Free Return & Exchange",
+      "subtitle": "Enjoy shopping pleasure, shop with confidence"
+    },
+    "shipping": {
+      "title": "Comprehensive Overseas Logistics Monitoring",
+      "subtitle": "Complete security protection"
+    }
+  },
+  "membership_page": {
+    "title": "Save on Self-Purchase, Earn by Sharing",
+    "member_price": {
+      "highlight": "Exceptional Member Price",
+      "description": "Save for a better life"
+    },
+    "commission": {
+      "highlight": "Earn Commission",
+      "description": "Work more earn more, easy money",
+      "prefix": "Share Quality Products"
+    }
+  },
+  "crypto_payment": {
+    "title": "Cryptocurrency Payment",
+    "lower_fees": {
+      "title": "Significantly reduce transaction fees, enjoy lower",
+      "subtitle": "purchase prices"
+    },
+    "global_support": {
+      "title": "Support global customers with convenient payment, making shopping",
+      "subtitle": "simple"
+    },
+    "privacy": {
+      "title": "Enjoy anonymous shopping experience, enhance payment security",
+      "subtitle": "and privacy"
+    }
   },
   "features": {
     "crypto": {
@@ -25,6 +103,51 @@
     "shipping": {
       "title": "Global Shipping",
       "description": "Consolidated shipping to reduce costs"
+    }
+  },
+  "products": {
+    "title": "Featured Products",
+    "subtitle": "Discover quality products from top Chinese brands",
+    "commission": "Commission",
+    "view_details": "View Details",
+    "view_all": "View All Products"
+  },
+  "membership": {
+    "title": "Membership Tiers",
+    "subtitle": "Choose the membership tier that suits you and enjoy more benefits",
+    "recommended": "Recommended",
+    "free": "Free",
+    "month": "month",
+    "year": "year",
+    "start_browsing": "Start Browsing",
+    "join_now": "Join Now"
+  },
+  "footer": {
+    "contact_us": "Contact Us",
+    "description": "Focusing on Chinese premium brand products, integrating quality supply sources and logistics, providing quality inspection, product photography, consolidated shipping and other services, offering consumers reliable channels for earning money and shopping",
+    "scan_download": "Scan to Download",
+    "copyright": "All rights reserved",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "tagline": "Chinese Premium Brands Worldwide",
+    "products_section": {
+      "title": "Products",
+      "all_products": "All Products",
+      "sports_fitness": "Sports & Fitness",
+      "electronics": "Electronics",
+      "fashion_beauty": "Fashion & Beauty"
+    },
+    "services_section": {
+      "title": "Services",
+      "quality_inspection": "Quality Inspection",
+      "membership": "Membership",
+      "global_shipping": "Global Shipping",
+      "crypto_payment": "Crypto Payment"
+    },
+    "company_section": {
+      "title": "Company",
+      "privacy_policy": "Privacy Policy",
+      "terms_of_service": "Terms of Service"
     }
   }
 }

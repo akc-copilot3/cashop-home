@@ -1,6 +1,10 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import { Service, Locale } from '@/types'
 import { getServices, getLocalizedText } from '@/lib/data'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from 'next-intl'
 import { Check } from 'lucide-react'
 import Link from 'next/link'
 
@@ -8,23 +12,25 @@ interface MembershipTiersProps {
   locale: Locale
 }
 
-export async function MembershipTiers({ locale }: MembershipTiersProps) {
-  const services = await getServices(locale)
+export function MembershipTiers({ locale }: MembershipTiersProps) {
+  const t = useTranslations('common')
+  const [services, setServices] = useState<Service | null>(null)
+
+  useEffect(() => {
+    getServices(locale).then(setServices)
+  }, [locale])
+
+  if (!services) return null
 
   return (
     <section className="py-16 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {locale === 'zh' ? '会员体系' : locale === 'ja' ? 'メンバーシップ' : 'Membership Tiers'}
+            {t('membership.title')}
           </h2>
           <p className="text-muted-foreground text-lg">
-            {locale === 'zh' 
-              ? '选择适合您的会员等级，享受更多优惠和权益' 
-              : locale === 'ja' 
-                ? 'あなたに最適なメンバーシップレベルを選択し、より多くの特典を享受' 
-                : 'Choose the membership tier that suits you and enjoy more benefits'
-            }
+            {t('membership.subtitle')}
           </p>
         </div>
         
@@ -39,7 +45,7 @@ export async function MembershipTiers({ locale }: MembershipTiersProps) {
               {index === 1 && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                    {locale === 'zh' ? '推荐' : locale === 'ja' ? 'おすすめ' : 'Recommended'}
+                    {t('membership.recommended')}
                   </span>
                 </div>
               )}
@@ -52,7 +58,7 @@ export async function MembershipTiers({ locale }: MembershipTiersProps) {
                   {typeof tier.price === 'number' ? (
                     tier.price === 0 ? (
                       <span>
-                        {locale === 'zh' ? '免费' : locale === 'ja' ? '無料' : 'Free'}
+                        {t('membership.free')}
                       </span>
                     ) : (
                       <span>${tier.price}</span>
@@ -61,11 +67,11 @@ export async function MembershipTiers({ locale }: MembershipTiersProps) {
                     <div className="space-y-1">
                       <div className="text-lg text-muted-foreground">
                         ${tier.price.monthly}/
-                        {locale === 'zh' ? '月' : locale === 'ja' ? '月' : 'month'}
+                        {t('membership.month')}
                       </div>
                       <div>
                         ${tier.price.annual}/
-                        {locale === 'zh' ? '年' : locale === 'ja' ? '年' : 'year'}
+                        {t('membership.year')}
                       </div>
                     </div>
                   )}
@@ -90,8 +96,8 @@ export async function MembershipTiers({ locale }: MembershipTiersProps) {
               >
                 <Link href="/membership">
                   {tier.id === 'guest' 
-                    ? (locale === 'zh' ? '立即浏览' : locale === 'ja' ? '今すぐ閲覧' : 'Start Browsing')
-                    : (locale === 'zh' ? '立即加入' : locale === 'ja' ? '今すぐ参加' : 'Join Now')
+                    ? t('membership.start_browsing')
+                    : t('membership.join_now')
                   }
                 </Link>
               </Button>

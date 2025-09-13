@@ -1,68 +1,61 @@
-import { NextRequest, NextResponse } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
+import { locales } from './i18n'
+import { NextRequest } from 'next/server'
 
-const locales = ['en', 'zh', 'ja']
-const defaultLocale = 'zh'
-
-function getLocale(request: NextRequest): string {
-  // 检查是否已经在路径中包含了语言
-  const pathname = request.nextUrl.pathname
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  )
-
-  if (pathnameHasLocale) return pathname.split('/')[1]
-
-  // 从 Accept-Language 头部获取用户首选语言
-  const acceptLanguage = request.headers.get('accept-language')
+const intlMiddleware = createMiddleware({
+  // A list of all locales that are supported
+  locales: locales,
   
-  if (acceptLanguage) {
-    // 解析 Accept-Language 头部
+  // Used when no locale matches
+  defaultLocale: 'zh',
+  
+  // Detect user's preferred language from Accept-Language header
+  localeDetection: true
+})
+
+export default function middleware(request: NextRequest) {
+  // Get the Accept-Language header to detect user's preferred language
+  const acceptLanguage = request.headers.get('accept-language') || ''
+  
+  // Simple language detection logic
+  const getUserPreferredLocale = (acceptLanguage: string): string => {
+    // Parse Accept-Language header
     const languages = acceptLanguage
       .split(',')
       .map(lang => lang.split(';')[0].trim().toLowerCase())
     
-    // 检查是否匹配支持的语言
+    // Check for exact matches first
     for (const lang of languages) {
-      // 完全匹配
-      if (locales.includes(lang)) {
+      if (locales.includes(lang as any)) {
         return lang
       }
-      
-      // 匹配语言代码的前两位（例如 zh-CN -> zh）
-      const langCode = lang.split('-')[0]
-      if (locales.includes(langCode)) {
-        return langCode
+    }
+    
+    // Check for language family matches (e.g., zh-CN -> zh)
+    for (const lang of languages) {
+      const languageFamily = lang.split('-')[0]
+      if (locales.includes(languageFamily as any)) {
+        return languageFamily
       }
     }
+    
+    // Default fallback
+    return 'zh'
   }
-
-  return defaultLocale
-}
-
-export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
-
-  // 检查路径是否已经包含支持的语言
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  )
-
-  // 如果路径已经包含语言，直接通过
-  if (pathnameHasLocale) return
-
-  // 如果是根路径，重定向到检测到的语言
-  const locale = getLocale(request)
-  return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url))
+  
+  // Only apply custom locale detection for root path
+  if (request.nextUrl.pathname === '/') {
+    const preferredLocale = getUserPreferredLocale(acceptLanguage)
+    const url = request.nextUrl.clone()
+    url.pathname = `/${preferredLocale}`
+    return Response.redirect(url)
+  }
+  
+  // Use next-intl middleware for all other paths
+  return intlMiddleware(request)
 }
 
 export const config = {
-  matcher: [
-    // 匹配所有路径，除了：
-    // - api 路径
-    // - _next/static (静态文件)
-    // - _next/image (图片优化文件)  
-    // - favicon.ico (网站图标)
-    // - 以点开头的文件 (如 .well-known)
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'
-  ]
+  // Match only internationalized pathnames
+  matcher: ['/', '/(zh|en|ja)/:path*']
 }

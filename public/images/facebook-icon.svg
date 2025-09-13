@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ant-design:facebook-filled" clip-path="url(#clip0_6099_22)">
+<g id="Vector">
+<path d="M0 0H24V24H0V0Z" fill="black"/>
+<path d="M23.04 0C23.571 2.05452e-05 24 0.428992 24 0.959961V23.04C24 23.571 23.571 24 23.04 24H16.5566V14.7031H19.6768L20.1445 11.082H16.5566V8.76855C16.5567 7.71889 16.8482 7.00501 18.3506 7.00488H20.2715V3.76758C19.9385 3.72258 18.8006 3.62402 17.4746 3.62402C14.7088 3.62418 12.8164 5.31326 12.8164 8.41211V11.082H9.68652V14.7061H12.8164V24H0.959961C0.428992 24 2.05452e-05 23.571 0 23.04V0.959961C2.10267e-05 0.428992 0.428992 2.10266e-05 0.959961 0H23.04Z" fill="var(--fill-0, #335BF5)"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_6099_22">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

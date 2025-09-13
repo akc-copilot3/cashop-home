@@ -24,7 +24,7 @@ export function Hero() {
           </Button>
           <Button size="lg" variant="outline" className="text-lg px-8 py-6" asChild>
             <Link href="/membership">
-              Join Membership
+              {t('hero.membership_cta')}
             </Link>
           </Button>
         </div>
