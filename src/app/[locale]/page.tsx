@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { BrandWall } from '@/components/sections/BrandWall'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { usePathname } from 'next/navigation'
 
 // Image constants for local assets
 const heroBackground = "/images/hero-background.png"
@@ -38,6 +39,8 @@ const qualityIcon = "/images/quality-icon.svg"
 
 export default function HomePage() {
   const t = useTranslations()
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'zh'
   
   const [activeTab, setActiveTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -190,7 +193,10 @@ export default function HomePage() {
                 <Image alt="Cashop Logo Vector" width={121.22} height={35.567} className="w-full h-full object-contain" src={cashopLogoMainText} />
               </div>
               {/* Tagline Text */}
-              <div className="font-medium h-3.5 leading-[0] not-italic relative text-[8px] text-[#222222] tracking-[4.5px]" style={{ fontFamily: "'PingFang SC:Medium', sans-serif" }}>
+              <div
+                className={`font-medium h-3.5 leading-[0] not-italic relative text-[8px] text-[#222222]${locale === 'zh' ? ' tracking-[4.5px]' : ''}`}
+                style={{ fontFamily: "'PingFang SC:Medium', sans-serif" }}
+              >
                 <p className="leading-[14px]">{t('nav.tagline')}</p>
               </div>
             </div>
@@ -308,9 +314,8 @@ export default function HomePage() {
               </div>
               <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:20">
                 <p className="mb-0">
-                  <span>&ldquo;</span>
                   <span className="text-[#ff2d7f]">{t('membership_page.member_price.highlight')}</span>
-                  <span>&rdquo;福利</span>
+                  <span>{t('membership_page.member_price.benefits')}</span>
                 </p>
                 <p>{t('membership_page.member_price.description')}</p>
               </div>
@@ -323,9 +328,8 @@ export default function HomePage() {
               </div>
               <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:21">
                 <p className="mb-0">
-                  <span>{t('membership_page.commission.prefix')}&ldquo;</span>
+                  <span>{t('membership_page.commission.prefix')}</span>
                   <span className="text-[#ff2d7f]">{t('membership_page.commission.highlight')}</span>
-                  <span>&rdquo;</span>
                 </p>
                 <p>{t('membership_page.commission.description')}</p>
               </div>
@@ -347,8 +351,7 @@ export default function HomePage() {
             <div className="absolute bg-gradient-to-t from-[#17323a] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
             <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
               <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
-                <p className="mb-0">{t('crypto_payment.lower_fees.title')}</p>
-                <p>{t('crypto_payment.lower_fees.subtitle')}</p>
+                <p className="mb-0 whitespace-normal">{t('crypto_payment.lower_fees.description')}</p>
               </div>
             </div>
           </div>
@@ -359,8 +362,7 @@ export default function HomePage() {
             <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
             <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
               <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
-                <p className="mb-0">{t('crypto_payment.global_support.title')}</p>
-                <p>{t('crypto_payment.global_support.subtitle')}</p>
+                <p className="mb-0 whitespace-normal">{t('crypto_payment.global_support.description')}</p>
               </div>
             </div>
           </div>
@@ -371,8 +373,7 @@ export default function HomePage() {
             <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
             <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
               <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
-                <p className="mb-0">{t('crypto_payment.privacy.title')}</p>
-                <p>{t('crypto_payment.privacy.subtitle')}</p>
+                <p className="mb-0 whitespace-normal">{t('crypto_payment.privacy.description')}</p>
               </div>
             </div>
           </div>
@@ -403,12 +404,12 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="content-stretch flex flex-col gap-4 items-center justify-start relative shrink-0 w-[205px]" data-node-id="5641:318">
+        <div className="content-stretch flex flex-col gap-4 items-center justify-start relative shrink-0" data-node-id="5641:318">
           <div className="relative shrink-0 size-[205px]" data-node-id="5641:320">
             <Image alt="" width={205} height={205} className="block max-w-none size-full" src={qrCodeGroup} />
             <div className="absolute bg-cover bg-center bg-white left-2.5 size-[185px] top-2.5" data-node-id="5641:325" style={{ backgroundImage: `url('${qrCodeBg}')` }} />
           </div>
-          <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[18px] text-center text-white" data-node-id="5641:319" style={{ width: "min-content" }}>
+          <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[18px] text-center text-white" data-node-id="5641:319">
             <p className="leading-[24px]">{t('footer.scan_download')}</p>
           </div>
         </div>
@@ -418,7 +419,7 @@ export default function HomePage() {
       <div className="bg-[#f9f9f9] h-[76px] w-[1440px] left-0 overflow-hidden right-0 relative mx-auto">
         <div className="bg-cover bg-center bg-no-repeat h-[76px] left-0 right-0 absolute top-0" style={{ backgroundImage: `url('${footerBackground}')` }} />
         <div className="h-[74px] left-1/2 overflow-hidden top-0 -translate-x-1/2 w-[1050px] absolute">
-          <div className="h-6 left-1/2 overflow-hidden top-[25px] -translate-x-1/2 w-[577px] absolute">
+          <div className="h-6 left-1/2 overflow-hidden top-[25px] -translate-x-1/2 w-[100%] absolute">
             <div className="font-normal text-[14px] text-white leading-[24px] text-center">
               {t('footer.copyright')} © {new Date().getFullYear()} www.cashop.com. {t('footer.copyright')}. {t('footer.terms')} | {t('footer.privacy')}
             </div>

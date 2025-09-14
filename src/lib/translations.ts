@@ -8,7 +8,7 @@ export const translations = {
       signup: "Sign Up"
     },
     hero: {
-      title: "Chinese Premium Brands Worldwide",
+      title: "China Top Brands Worldwide",
       subtitle: "Discover authentic Chinese brands with crypto payment support. Quality products, competitive prices, global shipping.",
       cta: "🚀 Start Shopping"
     },
@@ -38,7 +38,7 @@ export const translations = {
       }
     },
     footer: {
-      description: "Chinese Premium Brands Worldwide. Crypto payment, quality inspection, global shipping.",
+      description: "China Top Brands Worldwide. Crypto payment, quality inspection, global shipping.",
       products: "Products",
       services: "Services", 
       company: "Company",

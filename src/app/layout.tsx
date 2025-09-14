@@ -4,8 +4,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Cashop - Chinese Premium Brands Worldwide',
-  description: 'Premium Chinese brands dropshipping platform with crypto payment support',
+  title: 'Cashop - China Top Brands Shopping-Agent Platform',
+  description: 'China top brands shopping-agent platform with crypto payment support',
 }
 
 export default function RootLayout({

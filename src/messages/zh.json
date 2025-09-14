@@ -67,11 +67,12 @@
   "membership_page": {
     "title": "自购省钱 分享赚钱",
     "member_price": {
-      "highlight": "超值会员价",
-      "description": "为美好生活而省"
+      "highlight": "“超值会员价”",
+      "description": "为美好生活而省",
+      "benefits": "福利"
     },
     "commission": {
-      "highlight": "赚佣金",
+      "highlight": "“赚佣金”",
       "description": "多劳多得，轻松赚钱",
       "prefix": "分享好物"
     }
@@ -79,16 +80,13 @@
   "crypto_payment": {
     "title": "加密货币支付",
     "lower_fees": {
-      "title": "大幅降低交易手续费，享受更低",
-      "subtitle": "购买价格"
+      "description": "大幅降低交易手续费，享受更低购买价格"
     },
     "global_support": {
-      "title": "支持全球客户便捷支付，让购物",
-      "subtitle": "变的简单"
+      "description": "支持全球客户便捷支付，让购物变的简单"
     },
     "privacy": {
-      "title": "享受匿名购物体验，加强支付安全",
-      "subtitle": "与隐私"
+      "description": "享受匿名购物体验，加强支付安全与隐私"
     }
   },
   "features": {

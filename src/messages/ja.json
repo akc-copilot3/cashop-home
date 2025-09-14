@@ -67,11 +67,12 @@
   "membership_page": {
     "title": "自己購入で節約 シェアで稼ぐ",
     "member_price": {
-      "highlight": "超お得会員価格",
-      "description": "より良い生活のための節約"
+      "highlight": "“超お得会員価格”",
+      "description": "より良い生活のための節約",
+      "benefits": "特典"
     },
     "commission": {
-      "highlight": "手数料を稼ぐ",
+      "highlight": "“手数料を稼ぐ”",
       "description": "労働に応じて収入、簡単にお金を稼ぐ",
       "prefix": "良質商品をシェア"
     }
@@ -79,16 +80,13 @@
   "crypto_payment": {
     "title": "暗号通貨決済",
     "lower_fees": {
-      "title": "取引手数料を大幅削減、より低い",
-      "subtitle": "購入価格を享受"
+      "description": "取引手数料を大幅削減、より低い購入価格を享受"
     },
     "global_support": {
-      "title": "世界中の顧客の便利な決済をサポート、ショッピングを",
-      "subtitle": "シンプルに"
+      "description": "世界中の顧客の便利な決済をサポート、ショッピングをシンプルに"
     },
     "privacy": {
-      "title": "匿名ショッピング体験を享受、決済セキュリティを強化",
-      "subtitle": "とプライバシー"
+      "description": "匿名ショッピング体験を享受、決済セキュリティを強化とプライバシー"
     }
   },
   "features": {

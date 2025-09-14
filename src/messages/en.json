@@ -9,12 +9,12 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Chinese Premium Brands Worldwide",
+    "title": "China Top Brands Worldwide",
     "subtitle": "Discover authentic Chinese brands with crypto payment support",
     "cta": "Start Shopping",
     "membership_cta": "Join Membership",
     "tabs": {
-      "brands": "Chinese Premium Brands",
+      "brands": "China Top Brands",
       "quality": "Quality Assurance",
       "save_earn": "Save & Earn",
       "payment": "Secure Payment"
@@ -22,56 +22,57 @@
     "slides": {
       "brands": {
         "highlight": "5000+",
-        "title": " Chinese Premium Brands",
-        "description": "Quality rivals international top-tier goods with more competitive prices, easily access Chinese premium products"
+        "title": " China Top Brands",
+        "description": "Top quality Chinese brands at competitive prices"
       },
       "quality": {
-        "highlight": "Quality Assurance",
+        "highlight": "Quality Assurance ",
         "title": "Service",
-        "description": "360° transparent quality inspection, controlling quality from the source, eliminating low-quality goods, removing user quality concerns"
+        "description": "360° quality inspection from source to delivery"
       },
       "save_earn": {
-        "highlight": "Save on Self-Purchase ",
+        "highlight": "Save on Buying ",
         "title": "Earn by Sharing",
-        "description": "Membership unlocks member price benefits, share products and earn commission when others order, flexible and free, work more earn more"
+        "description": "Member prices + earn commission by sharing"
       },
       "payment": {
-        "highlight": "Cryptocurrency",
+        "highlight": "Cryptocurrency ",
         "title": "Payment",
-        "description": "Supports cryptocurrency payment, aligns with overseas user payment habits, enhances privacy and security protection"
+        "description": "Secure crypto payments worldwide"
       }
     }
   },
   "nav": {
-    "tagline": "Chinese Premium Brand Dropshipping Platform",
+    "tagline": "China Top Brands Shopping-Agent Platform",
     "language_label": "English"
   },
   "brands": {
     "title": "Partner Brands"
   },
   "quality_service": {
-    "title": "Quality Assurance Service",
+    "title": "Quality Assurance",
     "inspection": {
-      "title": "6-Side Product Detail Photography",
-      "subtitle": "15-second 4K video, 360° transparent quality inspection"
+      "title": "6-Side Product Photography",
+      "subtitle": "4K video with 360° quality inspection"
     },
     "returns": {
-      "title": "Worry-Free Return & Exchange",
-      "subtitle": "Enjoy shopping pleasure, shop with confidence"
+      "title": "Easy Return & Exchange",
+      "subtitle": "Shop with confidence and peace"
     },
     "shipping": {
-      "title": "Comprehensive Overseas Logistics Monitoring",
-      "subtitle": "Complete security protection"
+      "title": "Global Logistics Tracking",
+      "subtitle": "Secure and reliable delivery"
     }
   },
   "membership_page": {
-    "title": "Save on Self-Purchase, Earn by Sharing",
+    "title": "Save & Earn",
     "member_price": {
-      "highlight": "Exceptional Member Price",
-      "description": "Save for a better life"
+      "highlight": "\"Exceptional Member Price\" ",
+      "description": "Save for a better life",
+      "benefits": "Benefits"
     },
     "commission": {
-      "highlight": "Earn Commission",
+      "highlight": " \"Earn Commission\"",
       "description": "Work more earn more, easy money",
       "prefix": "Share Quality Products"
     }
@@ -79,16 +80,13 @@
   "crypto_payment": {
     "title": "Cryptocurrency Payment",
     "lower_fees": {
-      "title": "Significantly reduce transaction fees, enjoy lower",
-      "subtitle": "purchase prices"
+      "description": "Lower transaction fees for better prices"
     },
     "global_support": {
-      "title": "Support global customers with convenient payment, making shopping",
-      "subtitle": "simple"
+      "description": "Global payment support for simple shopping"
     },
     "privacy": {
-      "title": "Enjoy anonymous shopping experience, enhance payment security",
-      "subtitle": "and privacy"
+      "description": "Anonymous shopping with secure payments"
     }
   },
   "features": {
@@ -124,12 +122,12 @@
   },
   "footer": {
     "contact_us": "Contact Us",
-    "description": "Focusing on Chinese premium brand products, integrating quality supply sources and logistics, providing quality inspection, product photography, consolidated shipping and other services, offering consumers reliable channels for earning money and shopping",
+    "description": "Focusing on China top brand products, integrating quality supply sources and logistics, providing quality inspection, product photography, consolidated shipping and other services, offering consumers reliable channels for earning money and shopping",
     "scan_download": "Scan to Download",
     "copyright": "All rights reserved",
     "terms": "Terms of Use",
     "privacy": "Privacy Policy",
-    "tagline": "Chinese Premium Brands Worldwide",
+    "tagline": "China Top Brands Worldwide",
     "products_section": {
       "title": "Products",
       "all_products": "All Products",

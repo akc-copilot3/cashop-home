@@ -11,7 +11,7 @@ export function SimpleHero() {
     <section className="py-20 px-4 bg-gradient-to-br from-blue-50 to-indigo-100">
       <div className="container mx-auto text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Chinese Premium Brands Worldwide
+          China Top Brands Worldwide
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
           Discover authentic Chinese brands with crypto payment support
