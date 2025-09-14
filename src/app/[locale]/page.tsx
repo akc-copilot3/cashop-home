@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { BrandWall } from '@/components/sections/BrandWall'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
@@ -116,7 +117,7 @@ export default function HomePage() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isPaused]);
+  }, [isPaused, heroData.length]);
 
   // Handle manual tab click
   const handleTabClick = (index: number) => {
@@ -162,7 +163,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="relative w-[46px] h-[46px]">
-                <img alt="" className="w-full h-full object-contain transition-all duration-500" src={currentHero.icon} />
+                <Image alt="" width={46} height={46} className="w-full h-full object-contain transition-all duration-500" src={currentHero.icon} />
               </div>
             </div>
             <div className="font-normal text-[32px] text-white leading-[46px] min-w-full transition-all duration-500" style={{ fontFamily: "'PingFang SC:Regular', sans-serif", width: "min-content" }}>
@@ -180,13 +181,13 @@ export default function HomePage() {
           <div className="flex gap-2 items-start justify-start overflow-hidden relative z-10" data-name="logo">
             {/* Logo Icon */}
             <div className="h-[45.729px] relative w-[49.386px]" data-name="logo">
-              <img alt="Cashop Logo Icon" className="w-full h-full object-contain" src={cashopLogoMain} />
+              <Image alt="Cashop Logo Icon" width={49.386} height={45.729} className="w-full h-full object-contain" src={cashopLogoMain} />
             </div>
             {/* Logo Text and Tagline */}
             <div className="flex flex-col gap-0 items-start justify-start relative">
               {/* Main Logo Vector */}
               <div className="h-[35.567px] relative w-[121.22px]" data-name="Vector">
-                <img alt="Cashop Logo Vector" className="w-full h-full object-contain" src={cashopLogoMainText} />
+                <Image alt="Cashop Logo Vector" width={121.22} height={35.567} className="w-full h-full object-contain" src={cashopLogoMainText} />
               </div>
               {/* Tagline Text */}
               <div className="font-medium h-3.5 leading-[0] not-italic relative text-[8px] text-[#222222] tracking-[4.5px]" style={{ fontFamily: "'PingFang SC:Medium', sans-serif" }}>
@@ -202,7 +203,7 @@ export default function HomePage() {
             
             {/* Download Icon */}
             <div className="relative w-[26px] h-[26px]" data-name="icon下载">
-              <img alt="Download" className="w-full h-full object-contain" src={downloadIcon} />
+              <Image alt="Download" width={26} height={26} className="w-full h-full object-contain" src={downloadIcon} />
             </div>
           </div>
         </div>
@@ -302,14 +303,14 @@ export default function HomePage() {
             <div className="content-stretch flex gap-[25px] items-start justify-start relative shrink-0" data-node-id="5703:32">
               <div className="h-[42.295px] relative shrink-0 w-[23.551px]" data-node-id="5703:29">
                 <div className="absolute bottom-0 left-[-9.9%] right-[-3.17%] top-0">
-                  <img alt="" className="block max-w-none size-full" src={membershipIcon1} />
+                  <Image alt="" width={23.551} height={42.295} className="block max-w-none size-full" src={membershipIcon1} />
                 </div>
               </div>
               <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:20">
                 <p className="mb-0">
-                  <span>"</span>
+                  <span>&ldquo;</span>
                   <span className="text-[#ff2d7f]">{t('membership_page.member_price.highlight')}</span>
-                  <span>"福利</span>
+                  <span>&rdquo;福利</span>
                 </p>
                 <p>{t('membership_page.member_price.description')}</p>
               </div>
@@ -317,14 +318,14 @@ export default function HomePage() {
             <div className="content-stretch flex gap-[25px] items-start justify-start relative shrink-0" data-node-id="5703:33">
               <div className="h-[43.03px] relative shrink-0 w-[24.096px]" data-node-id="5703:28">
                 <div className="absolute bottom-0 left-[-9.68%] right-[-3.07%] top-0">
-                  <img alt="" className="block max-w-none size-full" src={membershipIcon2} />
+                  <Image alt="" width={24.096} height={43.03} className="block max-w-none size-full" src={membershipIcon2} />
                 </div>
               </div>
               <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:21">
                 <p className="mb-0">
-                  <span>{t('membership_page.commission.prefix')}"</span>
+                  <span>{t('membership_page.commission.prefix')}&ldquo;</span>
                   <span className="text-[#ff2d7f]">{t('membership_page.commission.highlight')}</span>
-                  <span>"</span>
+                  <span>&rdquo;</span>
                 </p>
                 <p>{t('membership_page.commission.description')}</p>
               </div>
@@ -389,22 +390,22 @@ export default function HomePage() {
           </div>
           <div className="content-stretch flex gap-5 h-6 items-center justify-start overflow-clip relative shrink-0 w-[156px]" data-name="social media" data-node-id="5641:297">
             <div className="relative shrink-0 size-6" data-name="ant-design:facebook-filled" data-node-id="5641:299">
-              <img alt="" className="block max-w-none size-full" src={facebookIcon} />
+              <Image alt="" width={24} height={24} className="block max-w-none size-full" src={facebookIcon} />
             </div>
             <div className="relative shrink-0 size-6" data-name="ant-design:instagram-outlined" data-node-id="5641:305">
-              <img alt="" className="block max-w-none size-full" src={instagramIcon} />
+              <Image alt="" width={24} height={24} className="block max-w-none size-full" src={instagramIcon} />
             </div>
             <div className="relative shrink-0 size-6" data-name="ant-design:twitter-outlined" data-node-id="5641:312">
-              <img alt="" className="block max-w-none size-full" src={twitterIcon} />
+              <Image alt="" width={24} height={24} className="block max-w-none size-full" src={twitterIcon} />
             </div>
             <div className="relative shrink-0 size-6" data-name="carbon:logo-youtube" data-node-id="5641:314">
-              <img alt="" className="block max-w-none size-full" src={youtubeIcon} />
+              <Image alt="" width={24} height={24} className="block max-w-none size-full" src={youtubeIcon} />
             </div>
           </div>
         </div>
         <div className="content-stretch flex flex-col gap-4 items-center justify-start relative shrink-0 w-[205px]" data-node-id="5641:318">
           <div className="relative shrink-0 size-[205px]" data-node-id="5641:320">
-            <img alt="" className="block max-w-none size-full" src={qrCodeGroup} />
+            <Image alt="" width={205} height={205} className="block max-w-none size-full" src={qrCodeGroup} />
             <div className="absolute bg-cover bg-center bg-white left-2.5 size-[185px] top-2.5" data-node-id="5641:325" style={{ backgroundImage: `url('${qrCodeBg}')` }} />
           </div>
           <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[18px] text-center text-white" data-node-id="5641:319" style={{ width: "min-content" }}>

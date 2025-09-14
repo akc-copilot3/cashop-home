@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { createPortal } from 'react-dom'
+import Image from 'next/image'
 
 const languages = [
   { code: 'zh', label: '简体中文', flag: '🇨🇳' },
@@ -104,14 +105,14 @@ export default function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="relative w-[26px] h-[26px]" data-name="icon">
-          <img alt="Language" className="w-full h-full object-contain" src="/images/language-icon.svg" />
+          <Image alt="Language" width={26} height={26} className="w-full h-full object-contain" src="/images/language-icon.svg" />
         </div>
         <div className="flex gap-1 items-center justify-start overflow-hidden" data-name="容器 7">
           <div className="font-normal leading-[0] not-italic relative text-[14px] text-[#222222] text-center text-nowrap" style={{ fontFamily: "'PingFang SC:Regular', sans-serif" }}>
             <p className="leading-[20px] whitespace-pre">{currentLanguage?.label || '简体中文'}</p>
           </div>
           <div className={`relative w-3 h-3 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} data-name="箭头收起">
-            <img alt="Chevron Down" className="w-full h-full object-contain" src="/images/chevron-down.svg" />
+            <Image alt="Chevron Down" width={12} height={12} className="w-full h-full object-contain" src="/images/chevron-down.svg" />
           </div>
         </div>
       </div>

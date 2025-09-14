@@ -7,7 +7,7 @@ export type Locale = (typeof locales)[number]
 
 export default getRequestConfig(async ({ locale }) => {
   // 如果 locale 不在支持的列表中，使用默认语言的消息
-  const validatedLocale = locales.includes(locale as Locale) ? locale : 'zh'
+  const validatedLocale = (locale && locales.includes(locale as Locale)) ? locale : 'zh'
   
   return {
     locale: validatedLocale,
