@@ -6,11 +6,16 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 // 生成所有品牌数据 - 使用public/images/brands/目录中的所有图片
 const brandNames = [
-  '李宁', '安踏', '海尔', '美的', '韩束', '七匹狼', '小米', '华为', '大疆', '比亚迪',
-  '腾讯', 'OPPO', 'vivo', '华硕', '联想', '阿里巴巴', '百度', '京东', '字节跳动', '美团',
-  '滴滴', '蒙牛', '伊利', '格力', '海信', '创维', '康佳', 'TCL', '长虹', '新飞',
-  '奥克斯', '志高', '科龙', '松下', '飞利浦', '西门子', '博世', '惠而浦', '美菱', '容声',
-  '澳柯玛', '星星', '白雪', '雪花', '青岛', '燕京', '泸州老窖', '五粮液'
+  '李宁', '安踏', '海尔', '美的', '格力', '华为', '小米', '比亚迪',
+  'OPPO', 'vivo', '海信', 'TCL', '创维', '康佳', '长虹', '联想',
+  '华硕', '荣耀', '一加', '魅族', '努比亚', '中兴', '京东', '天猫',
+  '苏宁', '国美', '唯品会', '蒙牛', '伊利', '光明', '三元', '君乐宝',
+  '飞鹤', '完达山', '青岛啤酒', '燕京啤酒', '雪花啤酒', '哈尔滨啤酒',
+  '茅台', '五粮液', '泸州老窖', '洋河', '剑南春', '汾酒', '古井贡酒',
+  '西凤酒', '董酒', '水井坊',
+  // 新增品牌名称
+  '添可', '奥克斯', '婷美', '意尔康', '内外', '千百度', '回力',
+  '棉竹屋', '稻草人', '艾美特', '蕉下', '金利来', '奥康', '百丽', 'JM中脉'
 ]
 
 // 精确的文件扩展名映射（基于实际文件列表）
@@ -20,13 +25,16 @@ const imageFileMap: Record<number, string> = {
   18: 'png', 19: 'png', 20: 'png', 21: 'png', 22: 'png', 23: 'png', 24: 'jpg', 25: 'jpeg',
   26: 'png', 27: 'png', 28: 'png', 29: 'jpg', 30: 'jpg', 31: 'jpg', 32: 'jpg', 33: 'jpg',
   34: 'jpg', 35: 'jpg', 36: 'jpg', 37: 'jpg', 38: 'jpg', 39: 'jpg', 40: 'jpeg', 41: 'png',
-  42: 'jpg', 43: 'jpg', 44: 'png', 45: 'jpg', 46: 'png', 47: 'png', 48: 'jpg', 49: 'png'
+  42: 'jpg', 43: 'jpg', 44: 'png', 45: 'jpg', 46: 'png', 47: 'png', 48: 'jpg', 49: 'png',
+  // 新增文件映射
+  50: 'jpeg', 51: 'jpg', 52: 'jpg', 53: 'jpg', 54: 'png', 55: 'png', 56: 'png', 57: 'png',
+  58: 'png', 59: 'png', 60: 'png', 61: 'png', 62: 'png', 63: 'png', 64: 'jpg'
 }
 
-const brands = Array.from({ length: 48 }, (_, index) => {
+const brands = Array.from({ length: 63 }, (_, index) => {
   const imageNumber = index + 2 // 从image2开始
   const extension = imageFileMap[imageNumber] || 'jpg'
-  
+
   return {
     id: index + 1,
     logo: `/images/brands/image${imageNumber}.${extension}`,
@@ -43,7 +51,7 @@ export function BrandWall({ onSlideChange }: BrandWallProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const brandsPerSlide = 21 // 7x3 grid
-  const totalSlides = Math.ceil(brands.length / brandsPerSlide)
+  const totalSlides = Math.ceil(brands.length / brandsPerSlide) // Now handles 65 brands
 
   const nextSlide = () => {
     if (isTransitioning) return
