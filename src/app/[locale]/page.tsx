@@ -208,7 +208,11 @@ export default function HomePage() {
             <LanguageSwitcher />
             
             {/* Download Icon */}
-            <div className="relative w-[26px] h-[26px]" data-name="icon下载">
+            <div 
+              className="relative w-[26px] h-[26px] cursor-pointer" 
+              data-name="icon下载"
+              onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+            >
               <Image alt="Download" width={26} height={26} className="w-full h-full object-contain" src={downloadIcon} />
             </div>
           </div>
