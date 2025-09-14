@@ -41,7 +41,7 @@ export default function HomePage() {
   const t = useTranslations()
   const pathname = usePathname()
   const locale = pathname.split('/')[1] || 'zh'
-  
+
   const [activeTab, setActiveTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -141,61 +141,61 @@ export default function HomePage() {
   const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <div className="bg-gradient-to-b from-white to-[#c8dbfd] relative w-full min-w-[1440px]">
-      <div className="w-[1440px] mx-auto relative">
+    <div className="bg-gradient-to-b from-white to-[#c8dbfd] relative w-full" style={{ minWidth: '80rem' }}>
+      <div className="mx-auto relative" style={{ width: '90rem', maxWidth: '100%' }}>
       {/* Header Section */}
-      <div className="relative bg-[#f9f9f9] h-[800px] overflow-hidden">
-        <div className="absolute bg-neutral-50 h-[863px] left-0 right-0 top-0" />
+      <div className="relative bg-[#f9f9f9] overflow-hidden w-full" style={{ height: '50rem' }}>
+        <div className="absolute bg-neutral-50 left-0 right-0 top-0 w-full" style={{ height: '53.9375rem' }} />
         
         {/* Background Filter */}
-        <div 
-          className="absolute bg-[#f9f9f9] inset-0 overflow-hidden"
+        <div
+          className="absolute bg-[#f9f9f9] inset-0 overflow-hidden w-full"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <div className="absolute bg-cover bg-center bg-white inset-0 transition-all duration-500" style={{ backgroundImage: `url('${currentHero.background}')` }} />
-          <div className="absolute bg-black bg-opacity-50 bottom-0 h-[800px] left-1/2 -translate-x-1/2 w-[1440px]" />
+          <div className="absolute bg-black bg-opacity-50 bottom-0 left-0 right-0 w-full" style={{ height: '50rem' }} />
           
           {/* Main Hero Content */}
-          <div className="absolute flex flex-col gap-[30px] h-[156px] items-start justify-start left-[194px] top-[332px] w-[928px]">
-            <div className="flex gap-4 items-center justify-start relative">
-              <div className="font-bold text-[60px] text-white tracking-[2px] leading-[80px] whitespace-pre transition-all duration-500" style={{ fontFamily: "'Alimama_FangYuanTi_VF:Bold-Square', sans-serif" }}>
+          <div className="absolute flex flex-col items-start justify-start left-1/2 -translate-x-1/2" style={{ gap: '1.875rem', height: '9.75rem', top: '20.75rem', width: '58rem' }}>
+            <div className="flex items-center justify-start relative" style={{ gap: '1rem' }}>
+              <div className="font-bold text-white whitespace-pre transition-all duration-500" style={{ fontFamily: "'Alimama_FangYuanTi_VF:Bold-Square', sans-serif", fontSize: '3.75rem', letterSpacing: '0.125rem', lineHeight: '5rem' }}>
                 <p className="leading-[80px] whitespace-pre">
                   <span style={{ color: currentHero.title.color }}>{currentHero.title.highlight}</span>
                   <span className="text-white">{currentHero.title.main}</span>
                 </p>
               </div>
-              <div className="relative w-[46px] h-[46px]">
+              <div className="relative" style={{ width: '2.875rem', height: '2.875rem' }}>
                 <Image alt="" width={46} height={46} className="w-full h-full object-contain transition-all duration-500" src={currentHero.icon} />
               </div>
             </div>
-            <div className="font-normal text-[32px] text-white leading-[46px] min-w-full transition-all duration-500" style={{ fontFamily: "'PingFang SC:Regular', sans-serif", width: "min-content" }}>
-              <p className="leading-[46px]">{currentHero.description}</p>
+            <div className="font-normal text-white min-w-full transition-all duration-500" style={{ fontFamily: "'PingFang SC:Regular', sans-serif", width: "min-content", fontSize: '2rem', lineHeight: '2.875rem' }}>
+              <p style={{ lineHeight: '2.875rem' }}>{currentHero.description}</p>
             </div>
           </div>
         </div>
 
         {/* Navigation Bar */}
-        <div className="absolute flex h-[104px] items-center justify-between left-1/2 overflow-hidden px-10 py-6 top-0 -translate-x-1/2 w-[1440px] z-20">
+        <div className="absolute flex items-center justify-between left-1/2 -translate-x-1/2 overflow-hidden top-0 z-20" style={{ height: '6.5rem', padding: '1.5rem 2.5rem', width: '90rem', maxWidth: '100%' }}>
           {/* Background Layer with Blur Effect */}
-          <div className="absolute backdrop-blur-[20px] backdrop-filter bg-[rgba(255,255,255,0.7)] h-[104px] left-0 top-0 w-[1440px] -z-10" style={{ backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }} />
+          <div className="absolute backdrop-filter bg-[rgba(255,255,255,0.7)] left-0 top-0 -z-10 w-full" style={{ backdropFilter: 'blur(1.25rem)', WebkitBackdropFilter: 'blur(1.25rem)', height: '6.5rem' }} />
           
           {/* Logo Section */}
-          <div className="flex gap-2 items-start justify-start overflow-hidden relative z-10" data-name="logo">
+          <div className="flex items-start justify-start overflow-hidden relative z-10" style={{ gap: '0.5rem' }} data-name="logo">
             {/* Logo Icon */}
-            <div className="h-[45.729px] relative w-[49.386px]" data-name="logo">
+            <div className="relative" style={{ height: '2.858rem', width: '3.087rem' }} data-name="logo">
               <Image alt="Cashop Logo Icon" width={49.386} height={45.729} className="w-full h-full object-contain" src={cashopLogoMain} />
             </div>
             {/* Logo Text and Tagline */}
             <div className="flex flex-col gap-0 items-start justify-start relative">
               {/* Main Logo Vector */}
-              <div className="h-[35.567px] relative w-[121.22px]" data-name="Vector">
+              <div className="relative" style={{ height: '2.223rem', width: '7.576rem' }} data-name="Vector">
                 <Image alt="Cashop Logo Vector" width={121.22} height={35.567} className="w-full h-full object-contain" src={cashopLogoMainText} />
               </div>
               {/* Tagline Text */}
               <div
-                className={`font-medium h-3.5 leading-[0] not-italic relative text-[8px] text-[#222222]${locale === 'zh' ? ' tracking-[4.5px]' : ''}`}
-                style={{ fontFamily: "'PingFang SC:Medium', sans-serif" }}
+                className={`font-medium leading-[0] not-italic relative text-[#222222]`}
+                style={{ fontFamily: "'PingFang SC:Medium', sans-serif", fontSize: '0.5rem', height: '0.875rem', letterSpacing: locale === 'zh' ? '0.281rem' : '0' }}
               >
                 <p className="leading-[14px]">{t('nav.tagline')}</p>
               </div>
@@ -203,13 +203,14 @@ export default function HomePage() {
           </div>
 
           {/* Right Navigation */}
-          <div className="flex gap-[58px] items-center justify-start relative z-10">
+          <div className="flex items-center justify-start relative z-10" style={{ gap: '3.625rem' }}>
             {/* Language Switcher */}
             <LanguageSwitcher />
             
             {/* Download Icon */}
-            <div 
-              className="relative w-[26px] h-[26px] cursor-pointer" 
+            <div
+              className="relative cursor-pointer"
+              style={{ width: '1.625rem', height: '1.625rem' }}
               data-name="icon下载"
               onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
             >
@@ -219,26 +220,26 @@ export default function HomePage() {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="absolute backdrop-blur-[10px] backdrop-filter bg-[rgba(255,255,255,0.2)] flex h-14 items-center justify-start left-[195px] top-[684px] w-[1050px]">
+        <div className="absolute backdrop-filter bg-[rgba(255,255,255,0.2)] flex items-center justify-start left-1/2 -translate-x-1/2" style={{ backdropFilter: 'blur(0.625rem)', height: '3.5rem', top: '42.75rem', width: '65.625rem' }}>
           {heroData.map((item, index) => (
-            <div key={item.id} className="flex flex-col gap-2.5 h-14 items-center justify-center px-[42px] py-4 relative w-[262px] cursor-pointer transition-all duration-300 hover:bg-[rgba(255,255,255,0.1)]" onClick={() => handleTabClick(index)}>
-              <div className={`${activeTab === index ? 'font-medium' : 'font-normal'} text-[16px] text-center text-white leading-[22px] whitespace-pre transition-all duration-300`} style={{ fontFamily: activeTab === index ? "'San Francisco Display:Medium', 'Noto Sans JP:Regular', 'Noto Sans SC:Regular', sans-serif" : "'San Francisco Display:Regular', 'Noto Sans SC:Regular', 'Noto Sans JP:Regular', sans-serif", fontVariationSettings: "'wght' 400" }}>
+            <div key={item.id} className="flex flex-col items-center justify-center relative cursor-pointer transition-all duration-300 hover:bg-[rgba(255,255,255,0.1)]" style={{ gap: '0.625rem', height: '3.5rem', padding: '1rem 2.625rem', width: '16.375rem' }} onClick={() => handleTabClick(index)}>
+              <div className={`${activeTab === index ? 'font-medium' : 'font-normal'} text-center text-white whitespace-pre transition-all duration-300`} style={{ fontFamily: activeTab === index ? "'San Francisco Display:Medium', 'Noto Sans JP:Regular', 'Noto Sans SC:Regular', sans-serif" : "'San Francisco Display:Regular', 'Noto Sans SC:Regular', 'Noto Sans JP:Regular', sans-serif", fontVariationSettings: "'wght' 400", fontSize: '1rem', lineHeight: '1.375rem' }}>
                 <p className="leading-[22px] whitespace-pre">{item.tab}</p>
               </div>
               {/* Divider - only show for items 1, 2, 3 (not the last one) */}
               {index < heroData.length - 1 && (
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-6 bg-[rgba(255,255,255,0.1)]" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px bg-[rgba(255,255,255,0.1)]" style={{ height: '1.5rem' }} />
               )}
             </div>
           ))}
           {/* Active Indicator */}
-          <div className="absolute backdrop-blur-[10px] backdrop-filter bg-[#ff2d7f] h-1 top-[52px] w-[262px] transition-all duration-500 ease-in-out" style={{ left: `${activeTab * 262}px` }} />
+          <div className="absolute backdrop-filter bg-[#ff2d7f] transition-all duration-500 ease-in-out" style={{ backdropFilter: 'blur(0.625rem)', height: '0.25rem', top: '3.25rem', width: '16.375rem', left: `${activeTab * 16.375}rem` }} />
         </div>
       </div>
 
       {/* Partner Brands Section */}
-      <div className="mt-[90px] text-center">
-        <h2 className="font-semibold text-[40px] text-[#222222] leading-[60px] mb-[50px]">
+      <div className="text-center" style={{ marginTop: '5.625rem' }}>
+        <h2 className="font-semibold text-[#222222]" style={{ fontSize: '2.5rem', lineHeight: '3.75rem', marginBottom: '3.125rem' }}>
           {t('brands.title')}
         </h2>
         
@@ -248,18 +249,18 @@ export default function HomePage() {
       </div>
 
       {/* Quality Assurance Section */}
-      <div className="mt-[90px]">
-        <h2 className="font-semibold text-[40px] text-[#222222] text-center leading-[60px] mb-[58px]">
+      <div style={{ marginTop: '5.625rem' }}>
+        <h2 className="font-semibold text-[#222222] text-center" style={{ fontSize: '2.5rem', lineHeight: '3.75rem', marginBottom: '3.625rem' }}>
           {t('quality_service.title')}
         </h2>
         
-        <div className="flex gap-4 justify-center">
+        <div className="flex justify-center" style={{ gap: '1rem' }}>
           {/* Service Card 1 */}
-          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
-            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${serviceQualityInspection}')` }} />
-            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
-            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
-              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative" style={{ borderRadius: '0.25rem', height: '19.75rem', width: '21.188rem' }}>
+            <div className="bg-center bg-cover bg-no-repeat shrink-0 w-full" style={{ height: '14.375rem', backgroundImage: `url('${serviceQualityInspection}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] left-0 top-0" style={{ height: '19.75rem', width: '21.188rem' }} />
+            <div className="box-border content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" style={{ gap: '0.625rem', height: '5.375rem', padding: '0 1.25rem' }}>
+              <div className="font-['PingFang_SC:Bold',_sans-serif] not-italic relative shrink-0 text-nowrap text-white whitespace-pre" style={{ fontSize: '1.125rem', lineHeight: '1.5rem' }}>
                 <p className="mb-0">{t('quality_service.inspection.title')}</p>
                 <p>{t('quality_service.inspection.subtitle')}</p>
               </div>
@@ -267,11 +268,11 @@ export default function HomePage() {
           </div>
 
           {/* Service Card 2 */}
-          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
-            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${serviceReturns}')` }} />
-            <div className="absolute bg-gradient-to-t from-[#736653] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
-            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
-              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative" style={{ borderRadius: '0.25rem', height: '19.75rem', width: '21.188rem' }}>
+            <div className="bg-center bg-cover bg-no-repeat shrink-0 w-full" style={{ height: '14.375rem', backgroundImage: `url('${serviceReturns}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#736653] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] left-0 top-0" style={{ height: '19.75rem', width: '21.188rem' }} />
+            <div className="box-border content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" style={{ gap: '0.625rem', height: '5.375rem', padding: '0 1.25rem' }}>
+              <div className="font-['PingFang_SC:Bold',_sans-serif] not-italic relative shrink-0 text-nowrap text-white whitespace-pre" style={{ fontSize: '1.125rem', lineHeight: '1.5rem' }}>
                 <p className="mb-0">{t('quality_service.returns.title')}</p>
                 <p>{t('quality_service.returns.subtitle')}</p>
               </div>
@@ -279,11 +280,11 @@ export default function HomePage() {
           </div>
 
           {/* Service Card 3 */}
-          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
-            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${serviceShipping}')` }} />
-            <div className="absolute bg-gradient-to-t from-[#394b69] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
-            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
-              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative" style={{ borderRadius: '0.25rem', height: '19.75rem', width: '21.188rem' }}>
+            <div className="bg-center bg-cover bg-no-repeat shrink-0 w-full" style={{ height: '14.375rem', backgroundImage: `url('${serviceShipping}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#394b69] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] left-0 top-0" style={{ height: '19.75rem', width: '21.188rem' }} />
+            <div className="box-border content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" style={{ gap: '0.625rem', height: '5.375rem', padding: '0 1.25rem' }}>
+              <div className="font-['PingFang_SC:Bold',_sans-serif] not-italic relative shrink-0 text-nowrap text-white whitespace-pre" style={{ fontSize: '1.125rem', lineHeight: '1.5rem' }}>
                 <p className="mb-0">{t('quality_service.shipping.title')}</p>
                 <p>{t('quality_service.shipping.subtitle')}</p>
               </div>
@@ -293,30 +294,30 @@ export default function HomePage() {
       </div>
 
       {/* Membership Benefits Section */}
-      <div className="content-stretch flex flex-col gap-[37px] items-center justify-start relative size-full mt-[120px]" data-node-id="5703:57">
-        <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[#222222] text-[40px] text-center" data-node-id="5641:344" style={{ width: "min-content" }}>
-          <p className="leading-[60px]">{t('membership_page.title')}</p>
+      <div className="content-stretch flex flex-col items-center justify-start relative size-full" style={{ gap: '2.313rem', marginTop: '7.5rem' }} data-node-id="5703:57">
+        <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[#222222] text-center" data-node-id="5641:344" style={{ width: "min-content", fontSize: '2.5rem' }}>
+          <p style={{ lineHeight: '3.75rem' }}>{t('membership_page.title')}</p>
         </div>
-        <div className="content-stretch flex gap-[94px] items-center justify-start relative shrink-0" data-node-id="6033:2049">
-          <div className="h-[454px] relative shrink-0 w-[590px]" data-node-id="6033:2047">
-            <div className="absolute bg-cover bg-center bg-white h-[227px] left-0 rounded-[8px] top-0 w-[302px]" data-node-id="5703:17" style={{ backgroundImage: `url('${imgRectangle10}')` }}>
-              <div aria-hidden="true" className="absolute border-[#dce8fd] border-[6px] border-solid inset-[-6px] pointer-events-none rounded-[14px]" />
+        <div className="content-stretch flex items-center justify-start relative shrink-0" style={{ gap: '5.875rem' }} data-node-id="6033:2049">
+          <div className="relative shrink-0" style={{ height: '28.375rem', width: '36.875rem' }} data-node-id="6033:2047">
+            <div className="absolute bg-cover bg-center bg-white left-0 top-0" data-node-id="5703:17" style={{ backgroundImage: `url('${imgRectangle10}')`, height: '14.188rem', width: '18.875rem', borderRadius: '0.5rem' }}>
+              <div aria-hidden="true" className="absolute border-[#dce8fd] border-solid pointer-events-none" style={{ borderWidth: '0.375rem', inset: '-0.375rem', borderRadius: '0.875rem' }} />
             </div>
-            <div className="absolute bg-cover bg-center bg-white h-[227px] left-[141px] rounded-[8px] top-[113px] w-[302px]" data-node-id="5703:18" style={{ backgroundImage: `url('${imgRectangle11}')` }}>
-              <div aria-hidden="true" className="absolute border-[#dce8fd] border-[6px] border-solid inset-[-6px] pointer-events-none rounded-[14px]" />
+            <div className="absolute bg-cover bg-center bg-white" data-node-id="5703:18" style={{ backgroundImage: `url('${imgRectangle11}')`, height: '14.188rem', left: '8.813rem', top: '7.063rem', width: '18.875rem', borderRadius: '0.5rem' }}>
+              <div aria-hidden="true" className="absolute border-[#dce8fd] border-solid pointer-events-none" style={{ borderWidth: '0.375rem', inset: '-0.375rem', borderRadius: '0.875rem' }} />
             </div>
-            <div className="absolute bg-cover bg-center bg-white h-[227px] left-72 rounded-[8px] top-[227px] w-[302px]" data-node-id="5703:19" style={{ backgroundImage: `url('${imgRectangle10}')` }}>
-              <div aria-hidden="true" className="absolute border-[#dce8fd] border-[6px] border-solid inset-[-6px] pointer-events-none rounded-[14px]" />
+            <div className="absolute bg-cover bg-center bg-white" data-node-id="5703:19" style={{ backgroundImage: `url('${imgRectangle10}')`, height: '14.188rem', left: '18rem', top: '14.188rem', width: '18.875rem', borderRadius: '0.5rem' }}>
+              <div aria-hidden="true" className="absolute border-[#dce8fd] border-solid pointer-events-none" style={{ borderWidth: '0.375rem', inset: '-0.375rem', borderRadius: '0.875rem' }} />
             </div>
           </div>
-          <div className="content-stretch flex flex-col gap-[88px] items-start justify-start relative shrink-0" data-node-id="6033:2048">
-            <div className="content-stretch flex gap-[25px] items-start justify-start relative shrink-0" data-node-id="5703:32">
-              <div className="h-[42.295px] relative shrink-0 w-[23.551px]" data-node-id="5703:29">
+          <div className="content-stretch flex flex-col items-start justify-start relative shrink-0" style={{ gap: '5.5rem' }} data-node-id="6033:2048">
+            <div className="content-stretch flex items-start justify-start relative shrink-0" style={{ gap: '1.563rem' }} data-node-id="5703:32">
+              <div className="relative shrink-0" style={{ height: '2.643rem', width: '1.472rem' }} data-node-id="5703:29">
                 <div className="absolute bottom-0 left-[-9.9%] right-[-3.17%] top-0">
                   <Image alt="" width={23.551} height={42.295} className="block max-w-none size-full" src={membershipIcon1} />
                 </div>
               </div>
-              <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:20">
+              <div className="font-['PingFang_SC:Semibold',_sans-serif] not-italic relative shrink-0 text-[#222222] text-nowrap whitespace-pre" data-node-id="5703:20" style={{ fontSize: '1.5rem', lineHeight: '2.625rem' }}>
                 <p className="mb-0">
                   <span className="text-[#ff2d7f]">{t('membership_page.member_price.highlight')}</span>
                   <span>{t('membership_page.member_price.benefits')}</span>
@@ -324,13 +325,13 @@ export default function HomePage() {
                 <p>{t('membership_page.member_price.description')}</p>
               </div>
             </div>
-            <div className="content-stretch flex gap-[25px] items-start justify-start relative shrink-0" data-node-id="5703:33">
-              <div className="h-[43.03px] relative shrink-0 w-[24.096px]" data-node-id="5703:28">
+            <div className="content-stretch flex items-start justify-start relative shrink-0" style={{ gap: '1.563rem' }} data-node-id="5703:33">
+              <div className="relative shrink-0" style={{ height: '2.689rem', width: '1.506rem' }} data-node-id="5703:28">
                 <div className="absolute bottom-0 left-[-9.68%] right-[-3.07%] top-0">
                   <Image alt="" width={24.096} height={43.03} className="block max-w-none size-full" src={membershipIcon2} />
                 </div>
               </div>
-              <div className="font-['PingFang_SC:Semibold',_sans-serif] leading-[42px] not-italic relative shrink-0 text-[#222222] text-[24px] text-nowrap whitespace-pre" data-node-id="5703:21">
+              <div className="font-['PingFang_SC:Semibold',_sans-serif] not-italic relative shrink-0 text-[#222222] text-nowrap whitespace-pre" data-node-id="5703:21" style={{ fontSize: '1.5rem', lineHeight: '2.625rem' }}>
                 <p className="mb-0">
                   <span>{t('membership_page.commission.prefix')}</span>
                   <span className="text-[#ff2d7f]">{t('membership_page.commission.highlight')}</span>
@@ -343,40 +344,40 @@ export default function HomePage() {
       </div>
 
       {/* Cryptocurrency Payment Section */}
-      <div className="mt-[120px]">
-        <h2 className="font-semibold text-[40px] text-[#222222] text-center leading-[60px] mb-[58px]">
+      <div style={{ marginTop: '7.5rem' }}>
+        <h2 className="font-semibold text-[#222222] text-center" style={{ fontSize: '2.5rem', lineHeight: '3.75rem', marginBottom: '3.625rem' }}>
           {t('crypto_payment.title')}
         </h2>
         
-        <div className="flex gap-4 justify-center">
+        <div className="flex justify-center" style={{ gap: '1rem' }}>
           {/* Payment Card 1 */}
-          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
-            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${cryptoPayment1}')` }} />
-            <div className="absolute bg-gradient-to-t from-[#17323a] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
-            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
-              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative" style={{ borderRadius: '0.25rem', height: '19.75rem', width: '21.188rem' }}>
+            <div className="bg-center bg-cover bg-no-repeat shrink-0 w-full" style={{ height: '14.375rem', backgroundImage: `url('${cryptoPayment1}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#17323a] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] left-0 top-0" style={{ height: '19.75rem', width: '21.188rem' }} />
+            <div className="box-border content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" style={{ gap: '0.625rem', height: '5.375rem', padding: '0 1.25rem' }}>
+              <div className="font-['PingFang_SC:Bold',_sans-serif] not-italic relative shrink-0 text-nowrap text-white whitespace-pre" style={{ fontSize: '1.125rem', lineHeight: '1.5rem' }}>
                 <p className="mb-0 whitespace-normal">{t('crypto_payment.lower_fees.description')}</p>
               </div>
             </div>
           </div>
 
           {/* Payment Card 2 */}
-          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
-            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${cryptoPayment2}')` }} />
-            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
-            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
-              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative" style={{ borderRadius: '0.25rem', height: '19.75rem', width: '21.188rem' }}>
+            <div className="bg-center bg-cover bg-no-repeat shrink-0 w-full" style={{ height: '14.375rem', backgroundImage: `url('${cryptoPayment2}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] left-0 top-0" style={{ height: '19.75rem', width: '21.188rem' }} />
+            <div className="box-border content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" style={{ gap: '0.625rem', height: '5.375rem', padding: '0 1.25rem' }}>
+              <div className="font-['PingFang_SC:Bold',_sans-serif] not-italic relative shrink-0 text-nowrap text-white whitespace-pre" style={{ fontSize: '1.125rem', lineHeight: '1.5rem' }}>
                 <p className="mb-0 whitespace-normal">{t('crypto_payment.global_support.description')}</p>
               </div>
             </div>
           </div>
 
           {/* Payment Card 3 */}
-          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative rounded-[4px] h-[316px] w-[339px]">
-            <div className="bg-center bg-cover bg-no-repeat h-[230px] shrink-0 w-full" style={{ backgroundImage: `url('${cryptoPayment3}')` }} />
-            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] h-[316px] left-0 top-0 w-[339px]" />
-            <div className="box-border content-stretch flex flex-col gap-2.5 h-[86px] items-start justify-center px-5 py-0 relative shrink-0 w-full">
-              <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[24px] not-italic relative shrink-0 text-[18px] text-nowrap text-white whitespace-pre">
+          <div className="content-stretch flex flex-col items-center justify-start overflow-clip relative" style={{ borderRadius: '0.25rem', height: '19.75rem', width: '21.188rem' }}>
+            <div className="bg-center bg-cover bg-no-repeat shrink-0 w-full" style={{ height: '14.375rem', backgroundImage: `url('${cryptoPayment3}')` }} />
+            <div className="absolute bg-gradient-to-t from-[#576c78] from-[27.057%] to-[rgba(122,138,153,0)] to-[56.013%] left-0 top-0" style={{ height: '19.75rem', width: '21.188rem' }} />
+            <div className="box-border content-stretch flex flex-col items-start justify-center relative shrink-0 w-full" style={{ gap: '0.625rem', height: '5.375rem', padding: '0 1.25rem' }}>
+              <div className="font-['PingFang_SC:Bold',_sans-serif] not-italic relative shrink-0 text-nowrap text-white whitespace-pre" style={{ fontSize: '1.125rem', lineHeight: '1.5rem' }}>
                 <p className="mb-0 whitespace-normal">{t('crypto_payment.privacy.description')}</p>
               </div>
             </div>
@@ -385,46 +386,46 @@ export default function HomePage() {
       </div>
 
       {/* Footer Section */}
-      <div className="bg-gradient-to-r from-[#8B1538] via-[#5C2D91] to-[#1B365D] box-border content-stretch flex items-center justify-between px-[193px] py-[37px] relative w-[1440px] h-auto mx-auto mt-[120px]" data-name="div" data-node-id="5641:293">
-        <div className="content-stretch flex flex-col gap-[25px] items-start justify-start overflow-clip relative shrink-0 w-[733px]" data-name="col-md-3" data-node-id="5641:294">
-          <div className="font-['Montserrat:Bold',_'Noto_Sans_SC:Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-[24px] text-nowrap text-white" data-node-id="5641:295">
-            <p className="leading-[32px] whitespace-pre">{t('footer.contact_us')}</p>
+      <div className="bg-gradient-to-r from-[#8B1538] via-[#5C2D91] to-[#1B365D] box-border content-stretch flex items-center justify-between relative h-auto w-full mx-auto" style={{ padding: '2.313rem 12.063rem', maxWidth: '90rem', marginTop: '7.5rem' }} data-name="div" data-node-id="5641:293">
+        <div className="content-stretch flex flex-col items-start justify-start overflow-clip relative shrink-0" style={{ gap: '1.563rem', width: '45.813rem' }} data-name="col-md-3" data-node-id="5641:294">
+          <div className="font-['Montserrat:Bold',_'Noto_Sans_SC:Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-nowrap text-white" data-node-id="5641:295" style={{ fontSize: '1.5rem' }}>
+            <p className="whitespace-pre" style={{ lineHeight: '2rem' }}>{t('footer.contact_us')}</p>
           </div>
-          <div className="font-['PingFang_SC:Medium',_sans-serif] leading-[20px] min-w-full not-italic relative shrink-0 text-[14px] text-white" data-node-id="5641:296" style={{ width: "min-content" }}>
+          <div className="font-['PingFang_SC:Medium',_sans-serif] min-w-full not-italic relative shrink-0 text-white" data-node-id="5641:296" style={{ width: "min-content", fontSize: '0.875rem', lineHeight: '1.25rem' }}>
             <p className="mb-0">{t('footer.description')}</p>
           </div>
-          <div className="content-stretch flex gap-5 h-6 items-center justify-start overflow-clip relative shrink-0 w-[156px]" data-name="social media" data-node-id="5641:297">
-            <div className="relative shrink-0 size-6" data-name="ant-design:facebook-filled" data-node-id="5641:299">
+          <div className="content-stretch flex items-center justify-start overflow-clip relative shrink-0" style={{ gap: '1.25rem', height: '1.5rem', width: '9.75rem' }} data-name="social media" data-node-id="5641:297">
+            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:facebook-filled" data-node-id="5641:299">
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={facebookIcon} />
             </div>
-            <div className="relative shrink-0 size-6" data-name="ant-design:instagram-outlined" data-node-id="5641:305">
+            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:instagram-outlined" data-node-id="5641:305">
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={instagramIcon} />
             </div>
-            <div className="relative shrink-0 size-6" data-name="ant-design:twitter-outlined" data-node-id="5641:312">
+            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:twitter-outlined" data-node-id="5641:312">
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={twitterIcon} />
             </div>
-            <div className="relative shrink-0 size-6" data-name="carbon:logo-youtube" data-node-id="5641:314">
+            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="carbon:logo-youtube" data-node-id="5641:314">
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={youtubeIcon} />
             </div>
           </div>
         </div>
-        <div className="content-stretch flex flex-col gap-4 items-center justify-start relative shrink-0" data-node-id="5641:318">
-          <div className="relative shrink-0 size-[205px]" data-node-id="5641:320">
+        <div className="content-stretch flex flex-col items-center justify-start relative shrink-0" style={{ gap: '1rem' }} data-node-id="5641:318">
+          <div className="relative shrink-0" style={{ width: '12.813rem', height: '12.813rem' }} data-node-id="5641:320">
             <Image alt="" width={205} height={205} className="block max-w-none size-full" src={qrCodeGroup} />
-            <div className="absolute bg-cover bg-center bg-white left-2.5 size-[185px] top-2.5" data-node-id="5641:325" style={{ backgroundImage: `url('${qrCodeBg}')` }} />
+            <div className="absolute bg-cover bg-center bg-white" data-node-id="5641:325" style={{ backgroundImage: `url('${qrCodeBg}')`, width: '11.563rem', height: '11.563rem', left: '0.625rem', top: '0.625rem' }} />
           </div>
-          <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-[18px] text-center text-white" data-node-id="5641:319">
-            <p className="leading-[24px]">{t('footer.scan_download')}</p>
+          <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-center text-white" data-node-id="5641:319" style={{ fontSize: '1.125rem' }}>
+            <p style={{ lineHeight: '1.5rem' }}>{t('footer.scan_download')}</p>
           </div>
         </div>
       </div>
 
       {/* Copyright Footer */}
-      <div className="bg-[#f9f9f9] h-[76px] w-[1440px] left-0 overflow-hidden right-0 relative mx-auto">
-        <div className="bg-cover bg-center bg-no-repeat h-[76px] left-0 right-0 absolute top-0" style={{ backgroundImage: `url('${footerBackground}')` }} />
-        <div className="h-[74px] left-1/2 overflow-hidden top-0 -translate-x-1/2 w-[1050px] absolute">
-          <div className="h-6 left-1/2 overflow-hidden top-[25px] -translate-x-1/2 w-[100%] absolute">
-            <div className="font-normal text-[14px] text-white leading-[24px] text-center">
+      <div className="bg-[#f9f9f9] left-0 overflow-hidden right-0 relative w-full mx-auto" style={{ height: '4.75rem', maxWidth: '90rem' }}>
+        <div className="bg-cover bg-center bg-no-repeat left-0 right-0 absolute top-0 w-full" style={{ backgroundImage: `url('${footerBackground}')`, height: '4.75rem' }} />
+        <div className="left-1/2 overflow-hidden top-0 -translate-x-1/2 absolute" style={{ height: '4.625rem', width: '65.625rem' }}>
+          <div className="left-1/2 overflow-hidden -translate-x-1/2 w-[100%] absolute" style={{ height: '1.5rem', top: '1.563rem' }}>
+            <div className="font-normal text-white text-center" style={{ fontSize: '0.875rem', lineHeight: '1.5rem' }}>
               {t('footer.copyright')} © {new Date().getFullYear()} www.cashop.com. {t('footer.copyright')}. {t('footer.terms')} | {t('footer.privacy')}
             </div>
           </div>

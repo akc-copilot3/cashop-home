@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base font size for design at 1440px */
+:root {
+  font-size: 16px; /* Default base font size */
+}
+
+/* Dynamic font-size adjustment for responsive scaling */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  :root {
+    /* Scale font-size based on viewport width */
+    font-size: calc(16px * (100vw / 1440));
+  }
+}
+
+/* Ensure minimum width with scrollbar below 1280px */
+@media (max-width: 1279px) {
+  body {
+    min-width: 1280px;
+    overflow-x: auto;
+  }
+}
+
 /* Custom radial gradient utility */
 @layer utilities {
   .bg-gradient-radial {
