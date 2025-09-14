@@ -2,16 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base font size for design at 1440px */
+/* Base font size for design at 1600px */
 :root {
   font-size: 16px; /* Default base font size */
 }
 
 /* Dynamic font-size adjustment for responsive scaling */
-@media (min-width: 1280px) and (max-width: 1439px) {
+@media (min-width: 1280px) and (max-width: 1599px) {
   :root {
     /* Scale font-size based on viewport width */
-    font-size: calc(16px * (100vw / 1440));
+    font-size: calc(16px * (100vw / 1600));
   }
 }
 

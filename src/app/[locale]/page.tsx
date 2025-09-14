@@ -142,7 +142,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-gradient-to-b from-white to-[#c8dbfd] relative w-full" style={{ minWidth: '80rem' }}>
-      <div className="mx-auto relative" style={{ width: '90rem', maxWidth: '100%' }}>
+      <div className="mx-auto relative" style={{ width: '100rem', maxWidth: '100%' }}>
       {/* Header Section */}
       <div className="relative bg-[#f9f9f9] overflow-hidden w-full" style={{ height: '50rem' }}>
         <div className="absolute bg-neutral-50 left-0 right-0 top-0 w-full" style={{ height: '53.9375rem' }} />
@@ -176,7 +176,7 @@ export default function HomePage() {
         </div>
 
         {/* Navigation Bar */}
-        <div className="absolute flex items-center justify-between left-1/2 -translate-x-1/2 overflow-hidden top-0 z-20" style={{ height: '6.5rem', padding: '1.5rem 2.5rem', width: '90rem', maxWidth: '100%' }}>
+        <div className="absolute flex items-center justify-between left-1/2 -translate-x-1/2 overflow-hidden top-0 z-20" style={{ height: '6.5rem', padding: '1.5rem 2.5rem', width: '100rem', maxWidth: '100%' }}>
           {/* Background Layer with Blur Effect */}
           <div className="absolute backdrop-filter bg-[rgba(255,255,255,0.7)] left-0 top-0 -z-10 w-full" style={{ backdropFilter: 'blur(1.25rem)', WebkitBackdropFilter: 'blur(1.25rem)', height: '6.5rem' }} />
           
@@ -386,7 +386,7 @@ export default function HomePage() {
       </div>
 
       {/* Footer Section */}
-      <div className="bg-gradient-to-r from-[#8B1538] via-[#5C2D91] to-[#1B365D] box-border content-stretch flex items-center justify-between relative h-auto w-full mx-auto" style={{ padding: '2.313rem 12.063rem', maxWidth: '90rem', marginTop: '7.5rem' }} data-name="div" data-node-id="5641:293">
+      <div className="bg-gradient-to-r from-[#8B1538] via-[#5C2D91] to-[#1B365D] box-border content-stretch flex items-center justify-between relative h-auto w-full mx-auto" style={{ padding: '2.313rem 12.063rem', maxWidth: '100rem', marginTop: '7.5rem' }} data-name="div" data-node-id="5641:293">
         <div className="content-stretch flex flex-col items-start justify-start overflow-clip relative shrink-0" style={{ gap: '1.563rem', width: '45.813rem' }} data-name="col-md-3" data-node-id="5641:294">
           <div className="font-['Montserrat:Bold',_'Noto_Sans_SC:Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-bold leading-[0] relative shrink-0 text-nowrap text-white" data-node-id="5641:295" style={{ fontSize: '1.5rem' }}>
             <p className="whitespace-pre" style={{ lineHeight: '2rem' }}>{t('footer.contact_us')}</p>
@@ -421,7 +421,7 @@ export default function HomePage() {
       </div>
 
       {/* Copyright Footer */}
-      <div className="bg-[#f9f9f9] left-0 overflow-hidden right-0 relative w-full mx-auto" style={{ height: '4.75rem', maxWidth: '90rem' }}>
+      <div className="bg-[#f9f9f9] left-0 overflow-hidden right-0 relative w-full mx-auto" style={{ height: '4.75rem', maxWidth: '100rem' }}>
         <div className="bg-cover bg-center bg-no-repeat left-0 right-0 absolute top-0 w-full" style={{ backgroundImage: `url('${footerBackground}')`, height: '4.75rem' }} />
         <div className="left-1/2 overflow-hidden top-0 -translate-x-1/2 absolute" style={{ height: '4.625rem', width: '65.625rem' }}>
           <div className="left-1/2 overflow-hidden -translate-x-1/2 w-[100%] absolute" style={{ height: '1.5rem', top: '1.563rem' }}>
