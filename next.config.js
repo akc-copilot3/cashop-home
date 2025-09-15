@@ -8,6 +8,20 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
   },
+  // Configure domain mapping for proper host detection in production
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Forwarded-Host',
+            value: ':host',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = withNextIntl(nextConfig)
