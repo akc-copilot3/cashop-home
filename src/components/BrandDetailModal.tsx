@@ -140,7 +140,7 @@ export function BrandDetailModal({ brandId, locale, onClose }: BrandDetailModalP
                     src={brandDetail.logoUrl}
                     alt={brandDetail.brandName}
                     fill
-                    className="object-contain p-2"
+                    className="object-contain"
                     unoptimized
                   />
                 </div>
@@ -151,7 +151,7 @@ export function BrandDetailModal({ brandId, locale, onClose }: BrandDetailModalP
             </div>
 
             {/* Scrollable Content Area - Starts from Brand Archive Section */}
-            <div className="overflow-y-auto flex-1">
+            <div className="overflow-y-auto flex-1 flex flex-col">
               {/* Brand Archive Section */}
               <div className="px-[50px] py-[60px]">
               <div className="relative mb-[76px]">
