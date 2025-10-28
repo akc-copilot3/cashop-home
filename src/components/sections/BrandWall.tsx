@@ -3,55 +3,63 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { BrandDetailModal } from '@/components/BrandDetailModal'
 
-// 生成所有品牌数据 - 使用public/images/brands/目录中的所有图片
-const brandNames = [
-  '李宁', '安踏', '海尔', '美的', '格力', '华为', '小米', '比亚迪',
-  'OPPO', 'vivo', '海信', 'TCL', '创维', '康佳', '长虹', '联想',
-  '华硕', '荣耀', '一加', '魅族', '努比亚', '中兴', '京东', '天猫',
-  '苏宁', '国美', '唯品会', '蒙牛', '伊利', '光明', '三元', '君乐宝',
-  '飞鹤', '完达山', '青岛啤酒', '燕京啤酒', '雪花啤酒', '哈尔滨啤酒',
-  '茅台', '五粮液', '泸州老窖', '洋河', '剑南春', '汾酒', '古井贡酒',
-  '西凤酒', '董酒', '水井坊',
-  // 新增品牌名称
-  '添可', '奥克斯', '婷美', '意尔康', '内外', '千百度', '回力',
-  '棉竹屋', '稻草人', '艾美特', '蕉下', '金利来', '奥康', '百丽', 'JM中脉'
-]
-
-// 精确的文件扩展名映射（基于实际文件列表）
-const imageFileMap: Record<number, string> = {
-  2: 'jpg', 3: 'jpeg', 4: 'jpg', 5: 'png', 6: 'jpeg', 7: 'jpeg', 8: 'jpeg', 9: 'jpeg',
-  10: 'png', 11: 'png', 12: 'jpg', 13: 'jpeg', 14: 'jpg', 15: 'jpg', 16: 'jpg', 17: 'gif',
-  18: 'png', 19: 'png', 20: 'png', 21: 'png', 22: 'png', 23: 'png', 24: 'jpg', 25: 'jpeg',
-  26: 'png', 27: 'png', 28: 'png', 29: 'jpg', 30: 'jpg', 31: 'jpg', 32: 'jpg', 33: 'jpg',
-  34: 'jpg', 35: 'jpg', 36: 'jpg', 37: 'jpg', 38: 'jpg', 39: 'jpg', 40: 'jpeg', 41: 'png',
-  42: 'jpg', 43: 'jpg', 44: 'png', 45: 'jpg', 46: 'png', 47: 'png', 48: 'jpg', 49: 'png',
-  // 新增文件映射
-  50: 'jpeg', 51: 'jpg', 52: 'jpg', 53: 'jpg', 54: 'png', 55: 'png', 56: 'png', 57: 'png',
-  58: 'png', 59: 'png', 60: 'png', 61: 'png', 62: 'png', 63: 'png', 64: 'jpg'
+interface Brand {
+  brandId: string
+  brandName: string
+  brandNameChs?: string
+  brandNameEn?: string
+  logoUrl: string
 }
-
-const brands = Array.from({ length: 63 }, (_, index) => {
-  const imageNumber = index + 2 // 从image2开始
-  const extension = imageFileMap[imageNumber] || 'jpg'
-
-  return {
-    id: index + 1,
-    logo: `/images/brands/image${imageNumber}.${extension}`,
-    name: brandNames[index] || `品牌${index + 1}`
-  }
-})
 
 interface BrandWallProps {
   onSlideChange?: (currentSlide: number) => void
 }
 
 export function BrandWall({ onSlideChange }: BrandWallProps) {
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'zh'
+
   const [currentSlide, setCurrentSlide] = useState(1) // 从1开始，因为0是克隆的最后一页
   const [isHovered, setIsHovered] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [brands, setBrands] = useState<Brand[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [selectedBrandId, setSelectedBrandId] = useState<string | null>(null)
+
   const brandsPerSlide = 21 // 7x3 grid
-  const totalSlides = Math.ceil(brands.length / brandsPerSlide) // Now handles 65 brands
+  const totalSlides = Math.ceil(brands.length / brandsPerSlide)
+
+  const handleBrandClick = (brandId: string) => {
+    setSelectedBrandId(brandId)
+  }
+
+  const handleCloseModal = () => {
+    setSelectedBrandId(null)
+  }
+
+  // Fetch brands from API
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        setIsLoading(true)
+        const response = await fetch(`https://api.cashop.com/operation-support/cashop-merchant-core/open/brand-info/list/${locale}`)
+        const data = await response.json()
+
+        if (data.success && data.data) {
+          setBrands(data.data)
+        }
+      } catch (error) {
+        console.error('Failed to fetch brands:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchBrands()
+  }, [locale])
 
   const nextSlide = () => {
     if (isTransitioning) return
@@ -130,9 +138,30 @@ export function BrandWall({ onSlideChange }: BrandWallProps) {
     isClone: true
   })
 
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="w-full max-w-[1200px] mx-auto h-[560px] relative flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ff2d7f] mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading brands...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Show empty state if no brands
+  if (brands.length === 0) {
+    return (
+      <div className="w-full max-w-[1200px] mx-auto h-[560px] relative flex items-center justify-center">
+        <p className="text-gray-600">No brands available</p>
+      </div>
+    )
+  }
+
   return (
     <div className="w-full max-w-[1200px] mx-auto h-[560px] relative">
-      <div 
+      <div
         className="relative h-[504px] mx-16"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -154,24 +183,29 @@ export function BrandWall({ onSlideChange }: BrandWallProps) {
                     {Array.from({ length: 7 }, (_, colIndex) => {
                       const brandIndex = rowIndex * 7 + colIndex
                       const brand = slide.brands[brandIndex]
-                      
+
                       if (brand) {
                         return (
-                          <div key={brand.id} className="bg-white/50 flex items-center justify-center overflow-hidden rounded-2xl w-[136px] h-[136px] hover:shadow-lg transition-all duration-300 hover:scale-105 border border-white/60">
-                            <div className="relative w-full h-full">
+                          <div
+                            key={brand.brandId}
+                            className="bg-white/50 flex items-center justify-center overflow-hidden rounded-2xl w-[136px] h-[136px] hover:shadow-lg transition-all duration-300 hover:scale-105 border border-white/60 cursor-pointer"
+                            onClick={() => handleBrandClick(brand.brandId)}
+                          >
+                            <div className="relative w-full h-full p-3">
                               <Image
-                                src={brand.logo}
-                                alt={brand.name}
+                                src={brand.logoUrl}
+                                alt={brand.brandName || brand.brandNameChs || ''}
                                 fill
-                                className="object-cover"
+                                className="object-contain"
+                                unoptimized
                               />
                             </div>
                           </div>
                         )
                       } else {
                         return (
-                          <div key={`empty-${slide.index}-${brandIndex}`} className="bg-gray-50 flex items-center justify-center overflow-hidden rounded-full w-[136px] h-[136px] opacity-20">
-                            <div className="w-[80px] h-[80px] bg-gray-200 rounded-full" />
+                          <div key={`empty-${slide.index}-${brandIndex}`} className="bg-gray-50 flex items-center justify-center overflow-hidden rounded-2xl w-[136px] h-[136px] opacity-20">
+                            <div className="w-[80px] h-[80px] bg-gray-200 rounded" />
                           </div>
                         )
                       }
@@ -208,14 +242,21 @@ export function BrandWall({ onSlideChange }: BrandWallProps) {
             key={index}
             onClick={() => goToSlide(index)}
             className={`rounded w-1.5 h-1.5 transition-all duration-300 ${
-              (currentSlide === index + 1) || 
-              (currentSlide === 0 && index === totalSlides - 1) || 
+              (currentSlide === index + 1) ||
+              (currentSlide === 0 && index === totalSlides - 1) ||
               (currentSlide === totalSlides + 1 && index === 0)
                 ? 'bg-[#ff2d7f]' : 'bg-[rgba(255,45,127,0.3)]'
             }`}
           />
         ))}
       </div>
+
+      {/* Brand Detail Modal */}
+      <BrandDetailModal
+        brandId={selectedBrandId}
+        locale={locale}
+        onClose={handleCloseModal}
+      />
     </div>
   )
 }

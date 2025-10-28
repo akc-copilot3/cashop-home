@@ -147,5 +147,20 @@
       "privacy_policy": "プライバシーポリシー",
       "terms_of_service": "利用規約"
     }
+  },
+  "brand_modal": {
+    "archive_title": "ブランドアーカイブ",
+    "story_title": "ブランドストーリー",
+    "awards_title": "ブランド受賞歴",
+    "founded_year": "設立年：",
+    "headquarters": "本社所在地：",
+    "revenue": "年間売上高：",
+    "main_categories": "主要カテゴリー：",
+    "representative_products": "代表製品：",
+    "mission": "ブランドミッション：",
+    "slogan": "ブランドスローガン：",
+    "positioning": "ブランドポジショニング：",
+    "core_markets": "主要市場：",
+    "milestones": "重要なマイルストーン："
   }
 }

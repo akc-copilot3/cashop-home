@@ -25,7 +25,7 @@ const cashopLogoMainText = "/images/cashop-logo-main-text.svg"
 const downloadIcon = "/images/download-icon.svg"
 const facebookIcon = "/images/facebook-icon.svg"
 const instagramIcon = "/images/instagram-icon.svg"
-const twitterIcon = "/images/twitter-icon.svg"
+const twitterIcon = "/images/icons8-x-100.svg"
 const youtubeIcon = "/images/youtube-icon.svg"
 const qrCodeBg = "/images/qr-code-bg.png"
 const qrCodeGroup = "/images/qr-code-group.svg"
@@ -392,21 +392,54 @@ export default function HomePage() {
             <p className="whitespace-pre" style={{ lineHeight: '2rem' }}>{t('footer.contact_us')}</p>
           </div>
           <div className="font-['PingFang_SC:Medium',_sans-serif] min-w-full not-italic relative shrink-0 text-white" data-node-id="5641:296" style={{ width: "min-content", fontSize: '0.875rem', lineHeight: '1.25rem' }}>
-            <p className="mb-0">{t('footer.description')}</p>
+            {locale === 'ja' ? (
+              <>
+                <div style={{ marginBottom: '0.5rem' }}>Cashop株式会社 丨  ケーショップ  丨  Cashop Co, Ltd.</div>
+                <div>8011401021097</div>
+                <div>〒108-0074 東京都港区 高輪2丁目12-47</div>
+              </>
+            ) : (
+              // 其他语言的 Footer
+              <p className="mb-0">{t('footer.description')}</p>
+            )}
           </div>
           <div className="content-stretch flex items-center justify-start overflow-clip relative shrink-0" style={{ gap: '1.25rem', height: '1.5rem', width: '9.75rem' }} data-name="social media" data-node-id="5641:297">
-            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:facebook-filled" data-node-id="5641:299">
+            {/* <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:facebook-filled" data-node-id="5641:299">
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={facebookIcon} />
-            </div>
-            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:instagram-outlined" data-node-id="5641:305">
+            </div> */}
+            <a 
+              href="https://www.instagram.com/cashop_official/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="relative shrink-0 cursor-pointer transition-opacity hover:opacity-80" 
+              style={{ width: '1.5rem', height: '1.5rem' }} 
+              data-name="ant-design:instagram-outlined" 
+              data-node-id="5641:305"
+            >
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={instagramIcon} />
-            </div>
-            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="ant-design:twitter-outlined" data-node-id="5641:312">
+            </a>
+            <a 
+              href="https://x.com/Cashop_official" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="relative shrink-0 cursor-pointer transition-opacity hover:opacity-80" 
+              style={{ width: '1.5rem', height: '1.5rem' }} 
+              data-name="ant-design:instagram-outlined" 
+              data-node-id="5641:305"
+            >
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={twitterIcon} />
-            </div>
-            <div className="relative shrink-0" style={{ width: '1.5rem', height: '1.5rem' }} data-name="carbon:logo-youtube" data-node-id="5641:314">
+            </a>
+            <a 
+              href="https://www.youtube.com/@Cashop-HQ" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="relative shrink-0 cursor-pointer transition-opacity hover:opacity-80" 
+              style={{ width: '1.5rem', height: '1.5rem' }} 
+              data-name="ant-design:instagram-outlined" 
+              data-node-id="5641:305"
+            >
               <Image alt="" width={24} height={24} className="block max-w-none size-full" src={youtubeIcon} />
-            </div>
+            </a>
           </div>
         </div>
         <div className="content-stretch flex flex-col items-center justify-start relative shrink-0" style={{ gap: '1rem' }} data-node-id="5641:318">

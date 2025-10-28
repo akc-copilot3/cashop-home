@@ -147,5 +147,20 @@
       "privacy_policy": "Privacy Policy",
       "terms_of_service": "Terms of Service"
     }
+  },
+  "brand_modal": {
+    "archive_title": "Brand Archive",
+    "story_title": "Brand Story",
+    "awards_title": "Brand Awards",
+    "founded_year": "Founded:",
+    "headquarters": "Headquarters:",
+    "revenue": "Annual Revenue:",
+    "main_categories": "Main Categories:",
+    "representative_products": "Representative Products:",
+    "mission": "Brand Mission:",
+    "slogan": "Brand Slogan:",
+    "positioning": "Brand Positioning:",
+    "core_markets": "Core Markets:",
+    "milestones": "Key Milestones:"
   }
 }

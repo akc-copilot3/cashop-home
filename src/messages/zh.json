@@ -147,5 +147,20 @@
       "privacy_policy": "隐私政策",
       "terms_of_service": "服务条款"
     }
+  },
+  "brand_modal": {
+    "archive_title": "品牌档案",
+    "story_title": "品牌故事",
+    "awards_title": "品牌奖项汇总",
+    "founded_year": "成立时间：",
+    "headquarters": "总部地点：",
+    "revenue": "年度营收：",
+    "main_categories": "主营品类：",
+    "representative_products": "代表产品：",
+    "mission": "品牌使命：",
+    "slogan": "品牌口号：",
+    "positioning": "品牌定位、特点：",
+    "core_markets": "核心市场、分布：",
+    "milestones": "重要里程碑："
   }
 }
