@@ -21,7 +21,7 @@
     },
     "slides": {
       "brands": {
-        "highlight": "5000+",
+        "highlight": "100+",
         "title": " 中国头部品牌",
         "description": "品质媲美国际顶级好物，价格更具竞争力，轻松入手中国优质商品"
       },
@@ -52,12 +52,12 @@
   "quality_service": {
     "title": "质量保障服务",
     "inspection": {
-      "title": "商品6面细节拍摄",
-      "subtitle": "15秒4K视频，360°逶明质检"
+      "title": "商品标准拍照",
+      "subtitle": "3～6 张图片，质量看得见"
     },
     "returns": {
-      "title": "无忧退换保障",
-      "subtitle": "畅享购物乐趣，大胆放心购"
+      "title": "5 天可退货时间",
+      "subtitle": "到仓质检后不满意，无忧退货"
     },
     "shipping": {
       "title": "海外物流全程严密监管",

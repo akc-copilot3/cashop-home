@@ -27,8 +27,7 @@ const facebookIcon = "/images/facebook-icon.svg"
 const instagramIcon = "/images/instagram-icon.svg"
 const twitterIcon = "/images/icons8-x-100.svg"
 const youtubeIcon = "/images/youtube-icon.svg"
-const qrCodeBg = "/images/qr-code-bg.png"
-const qrCodeGroup = "/images/qr-code-group.svg"
+const qrCodeGroup = "/images/download.png"
 const membershipIcon1 = "/images/membership-icon-1.svg"
 const membershipIcon2 = "/images/membership-icon-2.svg"
 const imgRectangle10 = "/images/membership-showcase-1.png"
@@ -45,6 +44,24 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Terms URL mapping by locale
+  const termsUrls: Record<string, string> = {
+    ja: 'https://doc.tzmessage.cn/preview/BWG4FNI8u.html',
+    en: 'https://doc.tzmessage.cn/preview/Ad_a5kuQT.html',
+    zh: 'https://doc.tzmessage.cn/preview/p55BaZfAm.html',
+  }
+
+  // Privacy URL mapping by locale
+  const privacyUrls: Record<string, string> = {
+    ja: 'https://doc.tzmessage.cn/preview/_3WsczNc6.html',
+    en: 'https://doc.tzmessage.cn/preview/34f_9txZ7.html',
+    zh: 'https://doc.tzmessage.cn/preview/ktZeabTeO.html',
+  }
+
+  // Get the terms and privacy URLs for current locale, fallback to Chinese
+  const termsUrl = termsUrls[locale] || termsUrls.zh;
+  const privacyUrl = privacyUrls[locale] || privacyUrls.zh;
 
   // Hero carousel data with translations
   const heroData = [
@@ -445,7 +462,6 @@ export default function HomePage() {
         <div className="content-stretch flex flex-col items-center justify-start relative shrink-0" style={{ gap: '1rem' }} data-node-id="5641:318">
           <div className="relative shrink-0" style={{ width: '12.813rem', height: '12.813rem' }} data-node-id="5641:320">
             <Image alt="" width={205} height={205} className="block max-w-none size-full" src={qrCodeGroup} />
-            <div className="absolute bg-cover bg-center bg-white" data-node-id="5641:325" style={{ backgroundImage: `url('${qrCodeBg}')`, width: '11.563rem', height: '11.563rem', left: '0.625rem', top: '0.625rem' }} />
           </div>
           <div className="font-['PingFang_SC:Bold',_sans-serif] leading-[0] min-w-full not-italic relative shrink-0 text-center text-white" data-node-id="5641:319" style={{ fontSize: '1.125rem' }}>
             <p style={{ lineHeight: '1.5rem' }}>{t('footer.scan_download')}</p>
@@ -459,7 +475,24 @@ export default function HomePage() {
         <div className="left-1/2 overflow-hidden top-0 -translate-x-1/2 absolute" style={{ height: '4.625rem', width: '65.625rem' }}>
           <div className="left-1/2 overflow-hidden -translate-x-1/2 w-[100%] absolute" style={{ height: '1.5rem', top: '1.563rem' }}>
             <div className="font-normal text-white text-center" style={{ fontSize: '0.875rem', lineHeight: '1.5rem' }}>
-              {t('footer.copyright')} © {new Date().getFullYear()} www.cashop.com. {t('footer.copyright')}. {t('footer.terms')} | {t('footer.privacy')}
+              {t('footer.copyright')} © {new Date().getFullYear()} www.cashop.com. {t('footer.copyright')}.{' '}
+              <a
+                href={termsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity cursor-pointer"
+              >
+                {t('footer.terms')}
+              </a>
+              {' | '}
+              <a
+                href={privacyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity cursor-pointer"
+              >
+                {t('footer.privacy')}
+              </a>
             </div>
           </div>
         </div>

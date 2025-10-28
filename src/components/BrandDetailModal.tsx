@@ -91,7 +91,7 @@ export function BrandDetailModal({ brandId, locale, onClose }: BrandDetailModalP
       onClick={onClose}
     >
       <div
-        className="bg-white relative max-h-[90vh] overflow-y-auto w-full max-w-[902px] rounded-lg shadow-2xl"
+        className="bg-white relative w-full max-w-[902px] rounded-lg shadow-2xl flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -111,9 +111,9 @@ export function BrandDetailModal({ brandId, locale, onClose }: BrandDetailModalP
             </div>
           </div>
         ) : brandDetail ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            {/* Header Section with Brand Logo */}
-            <div className="relative h-[240px] w-full overflow-hidden">
+          <>
+            {/* Header Section with Brand Logo - Fixed */}
+            <div className="relative h-[240px] w-full overflow-hidden flex-shrink-0 rounded-t-lg">
               {/* Background with blur effect */}
               <div className="absolute inset-0">
                 {brandDetail.brandImageUrl ? (
@@ -144,14 +144,16 @@ export function BrandDetailModal({ brandId, locale, onClose }: BrandDetailModalP
                     unoptimized
                   />
                 </div>
-                <p className="text-center text-2xl font-bold leading-6 text-white opacity-90">
+                <p className="w-[300px] text-center text-2xl font-bold leading-6 text-white opacity-90">
                   {brandDetail.brandName}
                 </p>
               </div>
             </div>
 
-            {/* Brand Archive Section */}
-            <div className="px-[50px] py-[60px]">
+            {/* Scrollable Content Area - Starts from Brand Archive Section */}
+            <div className="overflow-y-auto flex-1">
+              {/* Brand Archive Section */}
+              <div className="px-[50px] py-[60px]">
               <div className="relative mb-[76px]">
                 <div className="absolute left-1/2 top-0 -translate-x-1/2">
                   <p className="text-center text-2xl font-bold leading-8 text-[#222222] whitespace-nowrap">
@@ -226,25 +228,25 @@ export function BrandDetailModal({ brandId, locale, onClose }: BrandDetailModalP
               </div>
             </div>
 
-            {/* Brand Story Section */}
-            {brandDetail.brandIntro && (
-              <div className="px-[50px] pb-[60px]">
-                <div className="relative mb-[76px]">
-                  <div className="absolute left-1/2 top-0 -translate-x-1/2">
-                    <p className="text-center text-2xl font-bold leading-8 text-[#222222] whitespace-nowrap">
-                      {t('story_title')}
-                    </p>
-                    <div className="mx-auto mt-3 h-[2px] w-[150px] bg-[#ff2d7f]" />
+              {/* Brand Story Section */}
+              {brandDetail.brandIntro && (
+                <div className="px-[50px] pb-[60px]">
+                  <div className="relative mb-[76px]">
+                    <div className="absolute left-1/2 top-0 -translate-x-1/2">
+                      <p className="text-center text-2xl font-bold leading-8 text-[#222222] whitespace-nowrap">
+                        {t('story_title')}
+                      </p>
+                      <div className="mx-auto mt-3 h-[2px] w-[150px] bg-[#ff2d7f]" />
+                    </div>
+                  </div>
+
+                  <div className="text-base font-normal leading-6 text-[#222222] opacity-90 whitespace-pre-line text-left">
+                    {brandDetail.brandIntro}
                   </div>
                 </div>
-
-                <div className="text-base font-normal leading-6 text-[#222222] opacity-90 whitespace-pre-line text-left">
-                  {brandDetail.brandIntro}
-                </div>
-              </div>
-            )}
-
-          </div>
+              )}
+            </div>
+          </>
         ) : (
           <div className="flex items-center justify-center h-[400px]">
             <p className="text-gray-600">No brand details available</p>

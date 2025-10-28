@@ -45,7 +45,7 @@ export function BrandWall({ onSlideChange }: BrandWallProps) {
     const fetchBrands = async () => {
       try {
         setIsLoading(true)
-        const response = await fetch(`https://api.cashop.com/operation-support/cashop-merchant-core/open/brand-info/list/${locale}`)
+        const response = await fetch('https://api.cashop.com/operation-support/cashop-merchant-core/open/brand-info/list/zh')
         const data = await response.json()
 
         if (data.success && data.data) {
