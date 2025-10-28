@@ -47,9 +47,9 @@ export default function HomePage() {
 
   // Terms URL mapping by locale
   const termsUrls: Record<string, string> = {
-    ja: 'https://doc.tzmessage.cn/preview/BWG4FNI8u.html',
-    en: 'https://doc.tzmessage.cn/preview/Ad_a5kuQT.html',
-    zh: 'https://doc.tzmessage.cn/preview/p55BaZfAm.html',
+    ja: '/ja/law',
+    en: '/en/law',
+    zh: '/zh/law',
   }
 
   // Privacy URL mapping by locale
