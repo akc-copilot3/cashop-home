@@ -50,12 +50,26 @@ export default function LanguageSwitcher() {
 
   const handleLanguageChange = (languageCode: string) => {
     setIsOpen(false)
-    
-    // Replace the current locale in the pathname
+
+    // 如果切换到日语，检查当前域名
+    if (languageCode === 'ja') {
+      const currentHost = window.location.hostname
+      // 如果不是日本域名，则跨域重定向
+      if (currentHost !== 'www.cashop.co.jp') {
+        // 获取当前路径（去除语言前缀）
+        const segments = pathname.split('/')
+        const pathWithoutLocale = segments.slice(2).join('/')
+        const targetPath = pathWithoutLocale ? `/ja/${pathWithoutLocale}` : '/ja'
+        window.location.href = `https://www.cashop.co.jp${targetPath}`
+        return
+      }
+    }
+
+    // 正常的路由切换逻辑
     const segments = pathname.split('/')
     segments[1] = languageCode
     const newPath = segments.join('/')
-    
+
     router.push(newPath)
   }
 
